@@ -1,23 +1,18 @@
-Minecraft [![Build Status](https://secure.travis-ci.org/gregf/cookbook-minecraft.png)](http://travis-ci.org/gregf/cookbook-minecraft)
-=========
+#Minecraft [![Build Status](https://secure.travis-ci.org/gregf/cookbook-minecraft.png)](http://travis-ci.org/gregf/cookbook-minecraft)
 
-Description
-===========
+##Description
 
 Installs vanilla [Minecraft](http://www.minecraft.net) server.
 
-Requirements
-============
+##Requirements
 
 Requires the [java](https://github.com/opscode-cookbooks/java) cookbook which is defined in the recipe.
 
-Platform
---------
+###Platform
 
 * Debian, Ubuntu
 
-Attributes
-==========
+##Attributes
 
 See `attributes/default.rb` for default values.
 
@@ -52,8 +47,7 @@ See `attributes/default.rb` for default values.
 * `default['minecraft']['view-distance']`
 * `default['minecraft']['motd']`
 
-Usage
-=====
+##Usage
 
 Include the `minecraft` recipe and modify your run list and set any attributes
 you would like changed.
@@ -68,18 +62,15 @@ you would like changed.
     }
 
 
-Recipes
-=======
+##Recipes
 
-default
--------
+###default
 
 Include the default recipe into your run_list to install `minecraft` server.
 Configuration files are prepopulated based on values in attributes. I will keep
 the defaults in sync with upstream.
 
-TODO
-====
+##TODO
 
 * Proper init scripts (currently missing)
 * More attributes
@@ -90,8 +81,7 @@ TODO
 * Support more distros & BSD
 * Plugin support once 1.3 is released?
 
-License
-==================
+##License
 
 Copyright 2012, Greg Fitzgerald
 Permission is hereby granted, free of charge, to any person obtaining
