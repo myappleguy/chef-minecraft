@@ -1,7 +1,7 @@
 Description
 ===========
 
-Installs vanilla Minecraft (http://www.minecraft.net) server.
+Installs vanilla [Minecraft](http://www.minecraft.net) server.
 
 Requirements
 ============
@@ -15,38 +15,39 @@ Platform
 
 Attributes
 ==========
+
 See `attributes/default.rb` for default values.
 
-`default['minecraft']['user']`
-`default['minecraft']['install_dir'] `
+* `default['minecraft']['user']`
+* `default['minecraft']['install_dir']`
 
-`default['minecraft']['banned-ips'] `
-`default['minecraft']['banned-players']`
-`default['minecraft']['white-list-users']`
-`default['minecraft']['ops']`
+* `default['minecraft']['banned-ips']`
+* `default['minecraft']['banned-players']`
+* `default['minecraft']['white-list-users']`
+* `default['minecraft']['ops']`
 
-`default['minecraft']['allow-nether']`
-`default['minecraft']['level-name']`
-`default['minecraft']['enable-query']`
-`default['minecraft']['allow-flight']`
-`default['minecraft']['server-port']`
-`default['minecraft']['level-type']`
-`default['minecraft']['enable_rcon']`
-`default['minecraft']['level-seed']`
-`default['minecraft']['server-ip']`
-`default['minecraft']['max-build-height']`
-`default['minecraft']['spawn-npcs']`
-`default['minecraft']['white-list']`
-`default['minecraft']['spawn-animals'] `
-`default['minecraft']['online-mode']`
-`default['minecraft']['pvp']`
-`default['minecraft']['difficulty']`
-`default['minecraft']['gamemode']`
-`default['minecraft']['max-players']`
-`default['minecraft']['spawn-monsters']`
-`default['minecraft']['generate-structures']`
-`default['minecraft']['view-distance']`
-`default['minecraft']['motd']`
+* `default['minecraft']['allow-nether']`
+* `default['minecraft']['level-name']`
+* `default['minecraft']['enable-query']`
+* `default['minecraft']['allow-flight']`
+* `default['minecraft']['server-port']`
+* `default['minecraft']['level-type']`
+* `default['minecraft']['enable_rcon']`
+* `default['minecraft']['level-seed']`
+* `default['minecraft']['server-ip']`
+* `default['minecraft']['max-build-height']`
+* `default['minecraft']['spawn-npcs']`
+* `default['minecraft']['white-list']`
+* `default['minecraft']['spawn-animals'] `
+* `default['minecraft']['online-mode']`
+* `default['minecraft']['pvp']`
+* `default['minecraft']['difficulty']`
+* `default['minecraft']['gamemode']`
+* `default['minecraft']['max-players']`
+* `default['minecraft']['spawn-monsters']`
+* `default['minecraft']['generate-structures']`
+* `default['minecraft']['view-distance']`
+* `default['minecraft']['motd']`
 
 Usage
 =====
@@ -54,14 +55,14 @@ Usage
 Include the `minecraft` recipe and modify your run list and set any attributes
 you would like changed.
 
-  run_list [
-    "recipe[minecraft]"
-  ]
-  "minecraft":{
-    "motd": "Welcome all griefers!"
-    "max-players": 9001
-    "ops": ["nappa", "goku"]
-  }
+    run_list [
+      "recipe[minecraft]"
+    ]
+    "minecraft":{
+      "motd": "Welcome all griefers!"
+      "max-players": 9001
+      "ops": ["nappa", "goku"]
+    }
 
 
 Recipes
@@ -70,7 +71,7 @@ Recipes
 default
 -------
 
-Include the default recipe into the runlist to install `minecraft` server.
+Include the default recipe into your run_list to install `minecraft` server.
 Configuration files are prepopulated based on values in attributes. I will keep
 the defaults in sync with upstream.
 
@@ -86,9 +87,9 @@ TODO
 * Support more distros & BSD
 * Plugin support once 1.3 is released?
 
-License and Author
-
+License
 ==================
+
 Copyright 2012, Greg Fitzgerald
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
