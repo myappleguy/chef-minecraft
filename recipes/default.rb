@@ -28,22 +28,7 @@
 
 include_recipe 'java::default'
 
-minecraft_downloads = { :linux => "https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar" }
-
-tmpdir = Chef::Config[:file_cache_path]
-minecraft_jar = "#{tmpdir}/minecraft_server.jar"
-minecraft_platform = case node['os']
-  when "linux"
-    :linux
-  else
-    puts "Only supports linux right now, patches welcome."
-end
-
-if node['minecraft']['source']
-  minecraft_source = node['minecraft']['source']
-else
-  minecraft_source = minecraft_downloads[minecraft_platform]
-end
+minecraft_jar = "#{Chef::Config['file_cache_path']}/#{node['minecraft']['jar']}"
 
 user node['minecraft']['user'] do
   system true
@@ -53,11 +38,11 @@ user node['minecraft']['user'] do
 end
 
 remote_file minecraft_jar do
-  source minecraft_source
+  source "#{node['minecraft']['base_url']}/#{node['minecraft']['jar']}"
   owner node['minecraft']['user']
   group node['minecraft']['user']
-  mode "0644"
-  backup 5
+  mode '0644'
+  not_if { File.exists?(minecraft_jar) }
 end
 
 directory node['minecraft']['install_dir'] do

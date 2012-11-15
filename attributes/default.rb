@@ -1,5 +1,7 @@
 default['minecraft']['user']                = 'minecraft'
 default['minecraft']['install_dir']         = '/srv/minecraft'
+default['minecraft']['base_url']            = 'https://s3.amazonaws.com/MinecraftDownload/launcher'
+default['minecraft']['jar']                 = 'minecraft_server.jar'
 
 default['minecraft']['banned-ips']          = []
 default['minecraft']['banned-players']      = []
