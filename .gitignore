@@ -1,7 +1,10 @@
-site-cookbooks/*
-tmp/*
-.chef
-.rake_test_cache
-*.swp
-*.swo
+.vagrant
+Berksfile.lock
+Gemfile.lock
 *~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+/cookbooks
