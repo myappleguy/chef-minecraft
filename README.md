@@ -6,7 +6,7 @@ Installs vanilla [Minecraft](http://www.minecraft.net) server.
 
 ##Requirements
 
-Requires the [java](https://github.com/opscode-cookbooks/java) cookbook which is defined in the recipe.
+Requires the [java](http://community.opscode.com/cookbooks/java) and [tmux](http://community.opscode.com/cookbooks/tmux) cookbooks.
 
 ###Platform
 
@@ -18,6 +18,8 @@ See `attributes/default.rb` for default values.
 
 * `default['minecraft']['user']`
 * `default['minecraft']['install_dir']`
+* `default['minecraft']['base_url']`
+* `default['minecraft']['jar']`
 
 * `default['minecraft']['banned-ips']`
 * `default['minecraft']['banned-players']`
@@ -72,14 +74,9 @@ the defaults in sync with upstream.
 
 ##TODO
 
-* Proper init scripts (currently missing)
-* More attributes
-  - min/max ram
-  - group
-  - custom download url, no one at mojang knows what a version number is..
-  - checksums?
-* Support more distros & BSD
-* Plugin support once 1.3 is released?
+* Clean up attributes
+* Test kitchen
+* Bukkit support or just wait for 1.5?
 
 ##License
 
