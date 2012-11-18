@@ -36,7 +36,15 @@ Vagrant::Config.run do |config|
   config.ssh.max_tries = 40
   config.ssh.timeout   = 120
 
+  config.vm.forward_port 25565, 25565
+
   config.vm.provision :chef_solo do |chef|
+    chef.json = {
+      :minecraft => {
+        :xms => "256M",
+        :xmx => "256M"
+      }
+    }
     chef.run_list = [
       "recipe[minecraft]"
     ]
