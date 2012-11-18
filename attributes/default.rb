@@ -2,6 +2,12 @@ default['minecraft']['user']                = 'minecraft'
 default['minecraft']['install_dir']         = '/srv/minecraft'
 default['minecraft']['base_url']            = 'https://s3.amazonaws.com/MinecraftDownload/launcher'
 default['minecraft']['jar']                 = 'minecraft_server.jar'
+default['minecraft']['checksum']            = '7a1abdac5d412b7eebefd84030d40c1591c17325801dba9cbbeb3fdf3c374553'
+
+default['minecraft']['xms']                 = '1024M'
+default['minecraft']['xmx']                 = '1024M'
+default['minecraft']['ipv6']                = false
+default['minecraft']['pid']                 = '/var/run/minecraft.pid'
 
 default['minecraft']['banned-ips']          = []
 default['minecraft']['banned-players']      = []

@@ -24,25 +24,26 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-# Only focusing on Linux and BSD suppport. Patches are welcome for OSX and Windows.
-
 include_recipe 'java::default'
+include_recipe 'tmux::default'
 
 minecraft_jar = "#{Chef::Config['file_cache_path']}/#{node['minecraft']['jar']}"
 
 user node['minecraft']['user'] do
   system true
-  shell "/bin/false"
+  comment "Minecraft Server"
   home node['minecraft']['install_dir']
+  shell "/bin/false"
   action :create
 end
 
 remote_file minecraft_jar do
   source "#{node['minecraft']['base_url']}/#{node['minecraft']['jar']}"
+  checksum node['minecraft']['checksum']
   owner node['minecraft']['user']
   group node['minecraft']['user']
   mode '0644'
-  not_if { File.exists?(minecraft_jar) }
+  action :create_if_missing
 end
 
 directory node['minecraft']['install_dir'] do
@@ -68,4 +69,16 @@ end
     mode 0644
     action :create
   end
+end
+
+template "/etc/init.d/minecraft" do
+  source "minecraft.init.erb"
+  owner "root"
+  group "root"
+  mode 00755
+end
+
+service "minecraft" do
+  supports :restart => true
+  action [ :enable, :start ]
 end
