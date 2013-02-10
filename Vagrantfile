@@ -47,6 +47,7 @@ Vagrant::Config.run do |config|
       }
     }
     chef.run_list = [
+      "recipe[apt]",
       "recipe[minecraft]"
     ]
   end
