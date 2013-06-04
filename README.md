@@ -20,13 +20,19 @@ Supported platforms:
 
 See `attributes/default.rb` for default values.
 
-####Setup settings
+#### Server setup options
+
 * `default['minecraft']['user']`
 * `default['minecraft']['install_dir']`
 * `default['minecraft']['base_url']`
 * `default['minecraft']['jar']`
 
 #### Server properties
+
+Here are some example properties that are set in the attributes now, however you
+can set any of the properties defined here as well:
+http://www.minecraftwiki.net/wiki/Server.properties#Minecraft_server_properties
+
 * `default['minecraft']['properties']['banned-ips']`
 * `default['minecraft']['properties']['banned-players']`
 * `default['minecraft']['properties']['white-list-users']`
