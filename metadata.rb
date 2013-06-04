@@ -12,6 +12,6 @@ recipe "minecraft", "Installs and configures minecraft server."
   depends dep
 end
 
-%w{ debian ubuntu }.each do |os|
+%w{ debian ubuntu centos }.each do |os|
   supports os
 end

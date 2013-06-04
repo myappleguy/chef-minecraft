@@ -20,6 +20,11 @@ platforms:
   run_list:
   - recipe[apt]
 
+- name: centos-6.4
+  driver_config:
+    image_id: 365680
+  run_list:
+  - recipe[yum::epel]
 suites:
 - name: default
   run_list:

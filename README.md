@@ -10,7 +10,11 @@ Requires the [java](http://community.opscode.com/cookbooks/java) and [tmux](http
 
 ###Platform
 
-* Debian, Ubuntu
+Supported platforms:
+
+* Debian 6
+* Ubuntu 12.04
+* Centos 6.4
 
 ##Attributes
 
