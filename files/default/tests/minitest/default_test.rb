@@ -23,6 +23,5 @@ describe_recipe 'minecraft::default' do
 
   it "ensures world file is generated" do
     assert_directory "/srv/minecraft/world", "minecraft", "minecraft", "755"
-    assert_file "/srv/minecraft/world/level.dat", "minecraft", "minecraft", "644"
   end
 end
