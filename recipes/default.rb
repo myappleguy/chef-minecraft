@@ -25,7 +25,6 @@
 #
 
 include_recipe 'java::default'
-include_recipe 'tmux::default'
 include_recipe 'runit'
 
 minecraft_jar = "#{Chef::Config['file_cache_path']}/#{node['minecraft']['jar']}"
