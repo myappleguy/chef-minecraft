@@ -8,7 +8,7 @@ name              "minecraft"
 
 recipe "minecraft", "Installs and configures minecraft server."
 
-%w{ java tmux }.each do |dep|
+%w{ runit java }.each do |dep|
   depends dep
 end
 

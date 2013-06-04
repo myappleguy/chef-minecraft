@@ -26,6 +26,7 @@
 
 include_recipe 'java::default'
 include_recipe 'tmux::default'
+include_recipe 'runit'
 
 minecraft_jar = "#{Chef::Config['file_cache_path']}/#{node['minecraft']['jar']}"
 
@@ -71,14 +72,9 @@ end
   end
 end
 
-template "/etc/init.d/minecraft" do
-  source "minecraft.init.erb"
-  owner "root"
-  group "root"
-  mode 00755
-end
+runit_service "minecraft"
 
 service "minecraft" do
-  supports :restart => true
-  action [ :enable, :start ]
+  supports :status => true, :restart => true, :reload => true
+  reload_command "#{node['runit']['sv_bin']} hup #{node['runit']['service_dir']}/minecraft"
 end
