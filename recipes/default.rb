@@ -31,9 +31,9 @@ minecraft_jar = "#{Chef::Config['file_cache_path']}/#{node['minecraft']['jar']}"
 
 user node['minecraft']['user'] do
   system true
-  comment "Minecraft Server"
+  comment 'Minecraft Server'
   home node['minecraft']['install_dir']
-  shell "/bin/false"
+  shell '/bin/false'
   action :create
 end
 
@@ -54,9 +54,9 @@ directory node['minecraft']['install_dir'] do
   recursive true
 end
 
-execute "copy-minecraft_server.jar" do
+execute 'copy-minecraft_server.jar' do
   cwd node['minecraft']['install_dir']
-  command "cp -p #{minecraft_jar} ."
+  command 'cp -p #{minecraft_jar} .'
   creates "#{node['minecraft']['install_dir']}/minecraft_server.jar"
 end
 
@@ -68,13 +68,13 @@ end
     group node['minecraft']['user']
     mode 0644
     action :create
-    notifies :restart, "runit_service[minecraft]"
+    notifies :restart, 'runit_service[minecraft]'
   end
 end
 
-runit_service "minecraft"
+runit_service 'minecraft'
 
-service "minecraft" do
+service 'minecraft' do
   supports :status => true, :restart => true, :reload => true
   reload_command "#{node['runit']['sv_bin']} hup #{node['runit']['service_dir']}/minecraft"
 end

@@ -4,24 +4,24 @@ require 'minitest/spec'
 ## Spec:: default
 
 describe_recipe 'minecraft::default' do
-  it "ensures minecraft is installed" do
+  it 'ensures minecraft is installed' do
     file('/srv/minecraft/minecraft_server.jar').must_exist
   end
 
-  it "ensures a config file is present" do
+  it 'ensures a config file is present' do
     file('/srv/minecraft/server.properties').must_exist
   end
 
-  it "should have proper permissions" do
-    assert_directory "/srv/minecraft", "minecraft", "minecraft", "755"
-    assert_file "/srv/minecraft/minecraft_server.jar", "minecraft", "minecraft", "644"
+  it 'should have proper permissions' do
+    assert_directory '/srv/minecraft', 'minecraft', 'minecraft', '755'
+    assert_file '/srv/minecraft/minecraft_server.jar', 'minecraft', 'minecraft', '644'
   end
 
-  it "ensures minecraft is running" do
-    service("minecraft").must_be_running
+  it 'ensures minecraft is running' do
+    service('minecraft').must_be_running
   end
 
-  it "ensures world file is generated" do
-    assert_directory "/srv/minecraft/world", "minecraft", "minecraft", "755"
+  it 'ensures world file is generated' do
+    assert_directory '/srv/minecraft/world', 'minecraft', 'minecraft', '755'
   end
 end
