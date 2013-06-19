@@ -68,6 +68,7 @@ end
     group node['minecraft']['user']
     mode 0644
     action :create
+    notifies :restart, "runit_service[minecraft]"
   end
 end
 
