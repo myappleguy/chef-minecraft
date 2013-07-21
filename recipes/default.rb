@@ -56,7 +56,7 @@ end
 
 execute 'copy-minecraft_server.jar' do
   cwd node['minecraft']['install_dir']
-  command 'cp -p #{minecraft_jar} .'
+  command "cp -p #{minecraft_jar} ."
   creates "#{node['minecraft']['install_dir']}/minecraft_server.jar"
 end
 
