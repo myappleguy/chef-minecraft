@@ -44,7 +44,7 @@ source_url = "#{node['minecraft']['base_url']}/#{node['minecraft']['version']}/#
 log "Using #{jar_name}, stored locally as #{minecraft_jar} and fetched from #{source_url}"
 
 remote_file minecraft_jar do
-  source "#{source_url}"
+  source source_url
   checksum node['minecraft']['checksum']
   owner node['minecraft']['user']
   group node['minecraft']['user']
