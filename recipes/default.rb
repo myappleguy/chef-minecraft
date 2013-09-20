@@ -28,7 +28,7 @@ include_recipe 'java::default'
 include_recipe 'runit'
 
 jar_name = "#{node['minecraft']['jar']}.#{node['minecraft']['version']}.jar"
-minecraft_jar = "#{Chef::Config['file_cache_path']}/minecraft_server.jar"
+minecraft_jar = "#{Chef::Config['file_cache_path']}/#{jar_name}"
 
 node.default['minecraft']['jar_name'] = jar_name
 
