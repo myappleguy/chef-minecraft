@@ -54,10 +54,12 @@ link "/usr/local/bin/mark2" do
   to "#{node['minecraft']['mark2']['install_dir']}/mark2"
 end
 
-execute "mark2 systemwide configuration file" do
-  cwd node['minecraft']['mark2']['install_dir']
-  command "mark2 config"
-  creates "/etc/mark2/mark2.properties"
+file "/etc/mark2/mark2.properties" do
+  content "# custom settings go in server specific mark2.properties file"
+  owner node['minecraft']['user']
+  group node['minecraft']['user']
+  mode 0644
+  action :create_if_missing
 end
 
 template "#{node['minecraft']['install_dir']}/mark2.properties" do
