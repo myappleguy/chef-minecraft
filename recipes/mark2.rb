@@ -54,6 +54,12 @@ link "/usr/local/bin/mark2" do
   to "#{node['minecraft']['mark2']['install_dir']}/mark2"
 end
 
+directory "/etc/mark2" do
+  owner node['minecraft']['user']
+  group node['minecraft']['user']
+  mode 0755
+end
+
 file "/etc/mark2/mark2.properties" do
   content "# custom settings go in server specific mark2.properties file"
   owner node['minecraft']['user']
