@@ -24,8 +24,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-%w{ python-dev python-pip}.each do |p|
-  package p
+%w{ python-dev python-pip }.each do |pkg|
+  package pkg
 end
 
 mark2_gz = "#{Chef::Config['file_cache_path']}/mark2-master.tar.gz"
