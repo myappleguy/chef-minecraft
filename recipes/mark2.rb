@@ -33,7 +33,7 @@ mark2_gz = "#{Chef::Config['file_cache_path']}/mark2-master.tar.gz"
 remote_file mark2_gz do
   source node['minecraft']['mark2']['url']
   owner node['minecraft']['user']
-  group node['minecraft']['user']
+  group node['minecraft']['group']
   mode 0644
   action :create_if_missing
 end
@@ -56,14 +56,14 @@ end
 
 directory "/etc/mark2" do
   owner node['minecraft']['user']
-  group node['minecraft']['user']
+  group node['minecraft']['group']
   mode 0755
 end
 
 file "/etc/mark2/mark2.properties" do
   content "# custom settings go in server specific mark2.properties file"
   owner node['minecraft']['user']
-  group node['minecraft']['user']
+  group node['minecraft']['group']
   mode 0644
   action :create_if_missing
 end
@@ -71,7 +71,7 @@ end
 template "#{node['minecraft']['install_dir']}/mark2.properties" do
   source "mark2.properties.erb"
   owner node['minecraft']['user']
-  group node['minecraft']['user']
+  group node['minecraft']['group']
   mode 0644
   notifies :reload, 'service[minecraft]', :immediately
 end

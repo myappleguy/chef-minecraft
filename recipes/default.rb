@@ -46,14 +46,14 @@ remote_file minecraft_jar do
   source source_url
   checksum node['minecraft']['checksum']
   owner node['minecraft']['user']
-  group node['minecraft']['user']
+  group node['minecraft']['group']
   mode 0644
   action :create_if_missing
 end
 
 directory node['minecraft']['install_dir'] do
   owner node['minecraft']['user']
-  group node['minecraft']['user']
+  group node['minecraft']['group']
   mode '0755'
   action :create
   recursive true
@@ -73,7 +73,7 @@ include_recipe "minecraft::service"
   template "#{node['minecraft']['install_dir']}/#{template}" do
     source "#{template}.erb"
     owner node['minecraft']['user']
-    group node['minecraft']['user']
+    group node['minecraft']['group']
     mode 0644
     action :create
     notifies :reload, resources(:service => "minecraft")
