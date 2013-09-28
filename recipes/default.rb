@@ -25,7 +25,6 @@
 #
 
 include_recipe 'java::default'
-include_recipe 'runit'
 
 jar_name = "#{node['minecraft']['jar']}.#{node['minecraft']['version']}.jar"
 minecraft_jar = "#{Chef::Config['file_cache_path']}/#{jar_name}"
@@ -66,6 +65,9 @@ execute 'copy-minecraft_server.jar' do
   creates "#{node['minecraft']['install_dir']}/#{jar_name}"
 end
 
+include_recipe "minecraft::mark2"
+include_recipe "minecraft::service"
+
 %w[ops.txt server.properties banned-ips.txt
    banned-players.txt white-list.txt].each do |template|
   template "#{node['minecraft']['install_dir']}/#{template}" do
@@ -74,27 +76,6 @@ end
     group node['minecraft']['user']
     mode 0644
     action :create
-    notifies :restart, 'service[minecraft]'
+    notifies :reload, resources(:service => "minecraft")
   end
-end
-
-case node['minecraft']['init_style']
-when "runit"
-  runit_service "minecraft"
-
-  service 'minecraft' do
-    supports :status => true, :restart => true, :reload => true
-    reload_command "#{node['runit']['sv_bin']} hup #{node['runit']['service_dir']}/minecraft"
-  end
-when "mark2"
-  service 'minecraft' do
-    pattern "python /usr/local/bin/mark2"
-    start_command "sudo -u #{node['minecraft']['user']} mark2 start #{node['minecraft']['install_dir']}"
-    stop_command "sudo -u #{node['minecraft']['user']} mark2 stop #{node['minecraft']['install_dir']}"
-    restart_command "sudo -u #{node['minecraft']['user']} mark2 send ~restart"
-    reload_command "sudo -u #{node['minecraft']['user']} mark2 send ~reload"
-    supports :restart => true, :reload => true, :status => false
-   end
-
-  include_recipe "minecraft::mark2"
 end
