@@ -8,7 +8,7 @@ name              'minecraft'
 
 recipe 'minecraft', 'Installs and configures minecraft server.'
 
-%w{ runit java }.each do |dep|
+%w{ python sudo java runit }.each do |dep|
   depends dep
 end
 
