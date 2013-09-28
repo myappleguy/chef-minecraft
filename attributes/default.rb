@@ -1,4 +1,5 @@
-default['minecraft']['user']                = 'minecraft'
+default['minecraft']['user']                = 'mcserver'
+default['minecraft']['group']               = 'mcserver'
 default['minecraft']['install_dir']         = '/srv/minecraft'
 default['minecraft']['base_url']            = 'https://s3.amazonaws.com/Minecraft.Download/versions'
 default['minecraft']['jar']                 = 'minecraft_server'
