@@ -29,5 +29,12 @@ suites:
 - name: default
   run_list:
   - recipe[minecraft]
-  - recipe[minitest-handler]
   attributes:
+    minecraft:
+      init_style: "mark2"
+- name: runit
+  run_list:
+  - recipe[minecraft]
+  attributes:
+    minecraft:
+      init_style: "runit"
