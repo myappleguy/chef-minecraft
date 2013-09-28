@@ -3,6 +3,7 @@
 # Recipe:: service
 #
 # Copyright 2012, Greg Fitzgerald
+# Copyright 2013, Sean Escriva
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
