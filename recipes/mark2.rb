@@ -2,6 +2,7 @@
 # Cookbook Name:: minecraft
 # Recipe:: mark2
 #
+# Copyright 2013, Greg Fitzgerald
 # Copyright 2013, Sean Escriva
 #
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -24,35 +25,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-%w{ python-dev python-pip }.each do |pkg|
-  package pkg
-end
-
-mark2_gz = "#{Chef::Config['file_cache_path']}/mark2-master.tar.gz"
-
-remote_file mark2_gz do
-  source node['minecraft']['mark2']['url']
-  owner node['minecraft']['user']
-  group node['minecraft']['group']
-  mode 0644
-  action :create_if_missing
-end
-
-execute "extract mark2 tarball" do
-  cwd ::File.dirname node['minecraft']['mark2']['install_dir']
-  command "tar xzf #{mark2_gz} --transform 's/mark2-master/mark2/'"
-  creates "#{node['minecraft']['mark2']['install_dir']}/requirements.txt"
-end
-
-execute "pip install" do
-  cwd node['minecraft']['mark2']['install_dir']
-  command "pip install -r requirements.txt"
-  creates "/usr/local/lib/python2.7/dist-packages/feedparser.py"
-end
-
-link "/usr/local/bin/mark2" do
-  to "#{node['minecraft']['mark2']['install_dir']}/mark2"
-end
+python_pip 'mark2'
 
 directory "/etc/mark2" do
   owner node['minecraft']['user']
