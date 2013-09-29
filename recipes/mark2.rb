@@ -25,6 +25,9 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+include_recipe 'python'
+include_recipe 'sudo'
+
 python_pip 'mark2'
 
 directory "/etc/mark2" do
