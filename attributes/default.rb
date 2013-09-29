@@ -8,6 +8,8 @@ default['minecraft']['checksum']            = 'f132f35de7202137ac86ab5b9829d191c
 
 default['minecraft']['xms']                 = '512M'
 default['minecraft']['xmx']                 = '512M'
+# Additional options to be passed to java, for runit only
+default['minecraft']['java-options']        = ''
 default['minecraft']['init_style']          = 'mark2'
 
 default['minecraft']['banned-ips']          = []
