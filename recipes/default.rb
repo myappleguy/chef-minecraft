@@ -35,6 +35,7 @@ user node['minecraft']['user'] do
   system true
   comment 'Minecraft Server'
   home node['minecraft']['install_dir']
+  gid node['minecraft']['group']
   shell '/bin/false'
   action :create
 end
