@@ -1,6 +1,6 @@
 require 'minitest/spec'
 #
-## Cookbook Name:: minecraft 
+## Cookbook Name:: minecraft
 ## Spec:: default
 
 describe_recipe 'minecraft::default' do

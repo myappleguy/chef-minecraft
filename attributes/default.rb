@@ -9,7 +9,7 @@ default['minecraft']['checksum']            = '99a7f4088226f5574ec47fa69fda47793
 default['minecraft']['xms']                 = '512M'
 default['minecraft']['xmx']                 = '512M'
 default['minecraft']['ipv6']                = false
-default['minecraft']['init_style']          = "mark2"
+default['minecraft']['init_style']          = 'mark2'
 
 default['minecraft']['banned-ips']          = []
 default['minecraft']['banned-players']      = []
@@ -21,7 +21,7 @@ default['minecraft']['properties']['allow-nether']        = true
 default['minecraft']['properties']['level-name']          = 'world'
 default['minecraft']['properties']['enable-query']        = false
 default['minecraft']['properties']['allow-flight']        = false
-default['minecraft']['properties']['server-port']         = 25565
+default['minecraft']['properties']['server-port']         = '25565'
 default['minecraft']['properties']['level-type']          = 'DEFAULT'
 default['minecraft']['properties']['enable_rcon']         = false
 default['minecraft']['properties']['level-seed']          = ''

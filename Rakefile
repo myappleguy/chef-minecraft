@@ -16,7 +16,7 @@ end
 desc "Runs Rubocop linter"
 task :rubocop do
   Rake::Task[:prepare_sandbox].execute
-  sh "rubocop #{sandbox_path}"
+  sh "rubocop -c .rubocop.yml #{sandbox_path}"
 end
 
 desc "Runs knife cookbook test"

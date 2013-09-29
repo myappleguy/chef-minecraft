@@ -65,7 +65,7 @@ execute 'copy-minecraft_server.jar' do
   creates "#{node['minecraft']['install_dir']}/#{jar_name}"
 end
 
-include_recipe "minecraft::service"
+include_recipe 'minecraft::service'
 
 %w[ops.txt server.properties banned-ips.txt
    banned-players.txt white-list.txt].each do |template|
@@ -75,6 +75,6 @@ include_recipe "minecraft::service"
     group node['minecraft']['group']
     mode 0644
     action :create
-    notifies :reload, "service[minecraft]"
+    notifies :reload, 'service[minecraft]'
   end
 end

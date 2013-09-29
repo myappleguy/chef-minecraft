@@ -25,29 +25,24 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-
-
 case node['minecraft']['init_style']
-when "runit"
+when 'runit'
   include_recipe 'runit'
-
-  runit_service "minecraft"
-
+  runit_service 'minecraft'
   service 'minecraft' do
     supports :status => true, :restart => true, :reload => true
     reload_command "#{node['runit']['sv_bin']} hup #{node['runit']['service_dir']}/minecraft"
   end
-when "mark2"
-  include_recipe "minecraft::mark2"
+when 'mark2'
+  include_recipe 'minecraft::mark2'
   include_recipe 'sudo'
-
   service 'minecraft' do
-    pattern "python /usr/local/bin/mark2"
+    pattern 'python /usr/local/bin/mark2'
     start_command "sudo -u #{node['minecraft']['user']} mark2 start #{node['minecraft']['install_dir']}"
     stop_command "sudo -u #{node['minecraft']['user']} mark2 stop #{node['minecraft']['install_dir']}"
     restart_command "sudo -u #{node['minecraft']['user']} mark2 send ~restart"
     reload_command "sudo -u #{node['minecraft']['user']} mark2 send ~reload"
     supports :restart => true, :reload => true, :status => false
     action [:start]
-   end
+  end
 end
