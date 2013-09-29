@@ -31,17 +31,10 @@ minecraft_jar = "#{Chef::Config['file_cache_path']}/#{jar_name}"
 
 node.default['minecraft']['jar_name'] = jar_name
 
-user node['minecraft']['user'] do
-  system true
-  comment 'Minecraft Server'
-  home node['minecraft']['install_dir']
-  gid node['minecraft']['group']
-  shell '/bin/false'
-  action :create
-end
-
 source_url = "#{node['minecraft']['base_url']}/#{node['minecraft']['version']}/#{jar_name}"
 log "Using #{jar_name}, stored locally as #{minecraft_jar} and fetched from #{source_url}"
+
+include_recipe 'minecraft::user'
 
 remote_file minecraft_jar do
   source source_url
