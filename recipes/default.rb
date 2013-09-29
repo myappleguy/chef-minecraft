@@ -75,6 +75,6 @@ include_recipe "minecraft::service"
     group node['minecraft']['group']
     mode 0644
     action :create
-    notifies :reload, resources(:service => "minecraft")
+    notifies :reload, "service[minecraft]"
   end
 end
