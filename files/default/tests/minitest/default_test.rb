@@ -1,20 +1,35 @@
 require 'minitest/spec'
 #
-## Cookbook Name:: minecraft 
+## Cookbook Name:: minecraft
 ## Spec:: default
 
 describe_recipe 'minecraft::default' do
-  it 'ensures minecraft is installed' do
-    file("#{node['minecraft']['install_dir']}/minecraft_server.#{node['minecraft']['version']}.jar").must_exist
+  describe 'ensures the install directory is present' do
+    let(:dir) { directory(node['minecraft']['install_dir']) }
+    it { dir.must_have(:mode, '0755') }
+    it { dir.must_have(:owner, node['minecraft']['user']) }
+    it { dir.must_have(:group, node['minecraft']['group']) }
   end
 
-  it 'ensures a config file is present' do
-    file("#{node['minecraft']['install_dir']}/server.properties").must_exist
+  describe 'ensures minecraft jar exists' do
+    let(:jar) { file("#{node['minecraft']['install_dir']}/minecraft_server.#{node['minecraft']['version']}.jar") }
+    it { jar.must_have(:mode, '0644') }
+    it { jar.must_have(:owner, node['minecraft']['user']) }
+    it { jar.must_have(:group, node['minecraft']['group']) }
   end
 
-  it 'should have proper permissions' do
-    directory(node['minecraft']['install_dir']).must_exist.with(:owner, node['minecraft']['user']).and(:group, node['minecraft']['group']).and(:mode, "755")
-    assert_file "#{node['minecraft']['install_dir']}/minecraft_server.#{node['minecraft']['version']}.jar", node['minecraft']['user'], node['minecraft']['group'], '644'
+  describe 'ensures server.properties is present' do
+    let(:config) { file("#{node['minecraft']['install_dir']}/server.properties") }
+    it { config.must_have(:mode, '0644') }
+    it { config.must_have(:owner, node['minecraft']['user']) }
+    it { config.must_have(:group, node['minecraft']['group']) }
+  end
+
+  describe 'ensures the install directory is present' do
+    let(:dir) { directory(node['minecraft']['install_dir']) }
+    it { dir.must_have(:mode, '0755') }
+    it { dir.must_have(:owner, node['minecraft']['user']) }
+    it { dir.must_have(:group, node['minecraft']['group']) }
   end
 
   it 'ensures minecraft is running' do
