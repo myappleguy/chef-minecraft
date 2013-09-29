@@ -28,12 +28,12 @@ platforms:
 suites:
 - name: default
   run_list:
+  - recipe[minitest-handler]
   - recipe[minecraft]
   attributes:
-    minecraft:
-      init_style: "mark2"
 - name: runit
   run_list:
+  - recipe[minitest-handler]
   - recipe[minecraft]
   attributes:
     minecraft:
