@@ -26,7 +26,6 @@
 #
 
 include_recipe 'python'
-include_recipe 'sudo'
 
 python_pip 'mark2'
 
