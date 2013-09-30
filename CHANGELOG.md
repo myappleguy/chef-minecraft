@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4 (Unreleased)
+## 0.4 (September 30, 2013)
 
 > **Breaking Changes** There has been a lot of changes in this release, make sure you read everything carefully.
 
