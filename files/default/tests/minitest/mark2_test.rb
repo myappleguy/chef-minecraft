@@ -29,4 +29,13 @@ describe_recipe 'minecraft::mark2' do
     it { config.must_have(:owner, node['minecraft']['user']) }
     it { config.must_have(:group, node['minecraft']['group']) }
   end
+
+  describe 'ensures the local mark2 config contains properties we set' do
+    let(:config) { file("#{node['minecraft']['install_dir']}/mark2.properties") }
+    it { config.must_include 'mark2.shutdown-timeout=60' }
+    it { config.must_include 'plugin.backup.enabled=false' }
+    it { config.must_include "java.cli.X.ms=#{node['minecraft']['xms']}" }
+    it { config.must_include "java.cli.X.ms=#{node['minecraft']['xmx']}" }
+  end
+
 end

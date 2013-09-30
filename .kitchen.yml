@@ -31,6 +31,12 @@ suites:
   - recipe[minitest-handler]
   - recipe[minecraft]
   attributes:
+    minecraft:
+      mark2:
+        properties:
+          shutdown-timeout: 60
+        plugin:
+          backup.enabled: false
 - name: runit
   run_list:
   - recipe[minitest-handler]
