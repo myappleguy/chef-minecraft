@@ -17,10 +17,8 @@
 # limitations under the License.
 #
 
-
 # Default server properties
 # http://minecraft.gamepedia.com/Server.properties#Minecraft_server_properties
-
 default['minecraft']['properties']['allow-flight']          = false
 default['minecraft']['properties']['allow-nether']          = true
 default['minecraft']['properties']['difficulty']            = 1
