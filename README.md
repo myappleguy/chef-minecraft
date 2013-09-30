@@ -1,26 +1,26 @@
-#Minecraft [![Build Status](https://secure.travis-ci.org/gregf/cookbook-minecraft.png)](http://travis-ci.org/gregf/cookbook-minecraft)
+# Minecraft [![Build Status](https://secure.travis-ci.org/gregf/cookbook-minecraft.png)](http://travis-ci.org/gregf/cookbook-minecraft)
 
-##Description
+## Description
 
 Installs the vanilla [Minecraft](http://www.minecraft.net) server.
 
 * Opscode Community Site: http://community.opscode.com/cookbooks/minecraft
 * Source Code: http://github.com/gregf/cookbook-minecraft
 
-##Requirements
+## Requirements
 
-###Chef
+### Chef
 
 Tested on chef 11
 
-###Cookbooks
+### Cookbooks
 
 * [java](http://community.opscode.com/cookbooks/java)
 * [runit](http://community.opscode.com/cookbooks/runit)
 * [python](http://community.opscode.com/cookbooks/python)
 * [sudo](http://community.opscode.com/cookbooks/sudo)
 
-###Platforms
+### Platforms
 
 Supported platforms:
 
@@ -28,82 +28,82 @@ Supported platforms:
 * Ubuntu 12.04+
 * Centos 6.4+
 
-### Recipes
+## Recipes
 
-## default
+### default
 
 The default recipe ensures a vanilla minecraft is installed, and configured based on attributes you have specified.
 
-## user
+### user
 
 The user recipe is called by default, and creates a new user/group `mcserver` for the server to run as.
 
-## mark2
+### mark2
 
 [Mark2](https://github.com/mcdevs/mark2) is installed by default as a server wrapper. You can modify the `install_type` attribute to use runit if prefered.
 
-### Attributes
+## Attributes
 
-## Default
+### Default
 
-# minecraft['user']
+* minecraft['user']
 
 The user the minecraft server runs under, default `mcserver`
 
-# minecraft['group']
+* minecraft['group']
 
 The group the minecraft server runs under, default `mcserver`
 
-# minecraft['install_dir']
+* minecraft['install_dir']
 
 The default location minecraft is installed to, default `/srv/minecraft`
 
-# minecraft['base_url']
+* minecraft['base_url']
 
 The base url to fetch minecarft releases from, default `https://s3.amazonaws.com/Minecraft.Download/versions`
 
-# minecraft['jar']
+* minecraft['jar']
 
 The name of the jar file to fetch, default `minecraft_server`
 
-# minecraft['version']
+* minecraft['version']
 
 The version of minecraft server you want, default `1.6.4`
 
 
-# minecraft['checksum']
+* minecraft['checksum']
 
 The sha256 checksum of minecraft_server.jar
 
-# minecraft['xms']
+* minecraft['xms']
 
 The minimum ammount of ram java allow minecraft to consume, default `512M`
 
-# minecraft['xmx']
+* minecraft['xmx']
 
 The maximum ammount of ram java allow minecraft to consume, default `512M`
 
-# minecraft['java-options']
+* minecraft['java-options']
 
 You can use this to pass additional options to java, default blank
 
-# minecraft['init_style']
+* minecraft['init_style']
 
 Current you can choose between the mark2 server wrapper and runit, default `mark2`
 
-# minecraft['banned-ips']
+* minecraft['banned-ips']
 
 An array of ips you would like banned, default blank
 
-# minecraft['banned-players']
+* minecraft['banned-players']
 
 An array of players you would like banned, default blank
 
-# minecraft['white-list-users']
+* minecraft['white-list-users']
 
 An array of users you would like to white-list, default blank
 
-# minecraft['ops']
+* minecraft['ops']
 
 An array of admins, default blank
 
