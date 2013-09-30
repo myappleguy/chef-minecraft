@@ -1,7 +1,0 @@
-cookbook 'minecraft', :path => '/home/gregf/mc'
-cookbook 'apt', :locked_version => '1.10.0'
-cookbook 'minitest-handler', :locked_version => '0.2.1'
-cookbook 'java', :locked_version => '1.11.4'
-cookbook 'windows', :locked_version => '1.9.0'
-cookbook 'chef_handler', :locked_version => '1.1.4'
-cookbook 'tmux', :locked_version => '1.2.2'
