@@ -108,10 +108,10 @@ e.g.
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
 
-##License and Authors
+##License
 
-Author: Greg Fitzgerald <greg@gregf.org>
-Author: Sean Escriva <sean.escriva@gmail.com>
+Author: Greg Fitzgerald <greg@gregf.org>  
+Author: Sean Escriva <sean.escriva@gmail.com>  
 
 Copyright 2013, Greg Fitzgerald.
 
