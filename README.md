@@ -2,7 +2,7 @@
 
 ## Description
 
-Installs the vanilla [Minecraft](http://www.minecraft.net) server.
+Installs and configures a [Minecraft](http://www.minecraft.net) server.
 
 * Opscode Community Site: http://community.opscode.com/cookbooks/minecraft
 * Source Code: http://github.com/gregf/cookbook-minecraft
@@ -139,7 +139,7 @@ node.set['mark2']['plugin'] = {
 ### Known issues
 
 Minecraft internally regenerates all of its configuration files every startup. The order of server.properties sometimes changes, timestamps are
-automatically injected and headers are injected into all the configuration files.
+and headers are injected into all the configuration files.
 
 This in turn causes chef to notice configuration files have been changed and will automatically restart the server again to pick up those changes. This may
 cause your server to restart frequently, without notice.
