@@ -46,67 +46,59 @@ The user recipe is called by default, and creates a new user/group `mcserver` fo
 
 ### Default
 
-* minecraft['user']
+* `minecraft['user']`
+  - The user the minecraft server runs under, default `mcserver`
 
-The user the minecraft server runs under, default `mcserver`
+* `minecraft['group']`
+  - The group the minecraft server runs under, default `mcserver`
 
-* minecraft['group']
+* `minecraft['install_dir']`
+  - The default location minecraft is installed to, default `/srv/minecraft`
 
-The group the minecraft server runs under, default `mcserver`
+* `minecraft['base_url']`
+  - The base url to fetch minecarft releases from, default `https://s3.amazonaws.com/Minecraft.Download/versions`
 
-* minecraft['install_dir']
+* `minecraft['jar']`
+  - The name of the jar file to fetch, default `minecraft_server`
 
-The default location minecraft is installed to, default `/srv/minecraft`
+* `minecraft['version']`
+  - The version of minecraft server you want, default `1.6.4`
 
-* minecraft['base_url']
+* `minecraft['checksum']`
+  - The sha256 checksum of minecraft_server.jar
 
-The base url to fetch minecarft releases from, default `https://s3.amazonaws.com/Minecraft.Download/versions`
+* `minecraft['xms']`
+  - The minimum ammount of ram java allow minecraft to consume, default `512M`
 
-* minecraft['jar']
+* `minecraft['xmx']`
+  - The maximum ammount of ram java allow minecraft to consume, default `512M`
 
-The name of the jar file to fetch, default `minecraft_server`
+* `minecraft['java-options']`
+  - You can use this to pass additional options to java, default blank
 
-* minecraft['version']
+* `minecraft['init_style']`
+  - Current you can choose between the mark2 server wrapper and runit, default `mark2`
 
-The version of minecraft server you want, default `1.6.4`
+* `minecraft['banned-ips']`
+  - An array of ips you would like banned, default blank
 
+* `minecraft['banned-players']`
+  - An array of players you would like banned, default blank
 
-* minecraft['checksum']
+* `minecraft['white-list-users']`
+  - An array of users you would like to white-list, default blank
 
-The sha256 checksum of minecraft_server.jar
+* `minecraft['ops']`
+  - An array of admins, default blank
 
-* minecraft['xms']
+### Properties
 
-The minimum ammount of ram java allow minecraft to consume, default `512M`
+You can can customize any of the settings from server.properties. They are kept up to date with upstream and you can read about each setting in more
+detail [here](http://minecraft.gamepedia.com/Server.properties#Minecraft_server_properties)
 
-* minecraft['xmx']
+e.g.
 
-The maximum ammount of ram java allow minecraft to consume, default `512M`
-
-* minecraft['java-options']
-
-You can use this to pass additional options to java, default blank
-
-* minecraft['init_style']
-
-Current you can choose between the mark2 server wrapper and runit, default `mark2`
-
-* minecraft['banned-ips']
-
-An array of ips you would like banned, default blank
-
-* minecraft['banned-players']
-
-An array of players you would like banned, default blank
-
-* minecraft['white-list-users']
-
-An array of users you would like to white-list, default blank
-
-* minecraft['ops']
-
-An array of admins, default blank
-
+`node['minecraft']['properties']['seed'] = "chef"`
 
 ##Contributing
 
