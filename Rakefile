@@ -1,6 +1,6 @@
 #!/usr/bin/env rake
 
-task :default => "foodcritic"
+task :default => %w{ foodcritic knife rubocop }
 
 desc "Runs foodcritic linter"
 task :foodcritic do
