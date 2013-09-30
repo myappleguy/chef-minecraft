@@ -18,7 +18,6 @@ Tested on chef 11
 * [java](http://community.opscode.com/cookbooks/java)
 * [runit](http://community.opscode.com/cookbooks/runit)
 * [python](http://community.opscode.com/cookbooks/python)
-* [sudo](http://community.opscode.com/cookbooks/sudo)
 
 ### Platforms
 
