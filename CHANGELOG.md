@@ -2,7 +2,7 @@
 
 ## 0.4 (Unreleased)
 
-> **Breaking Changes** There have been a lot of changes in this release, make sure you read everything carefully.
+> **Breaking Changes** There has been a lot of changes in this release, make sure you read everything carefully.
 
 * Big rewrite of the Readme
 * Split recipes up
