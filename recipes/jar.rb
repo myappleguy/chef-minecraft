@@ -18,25 +18,25 @@
 #
 
 if node['minecraft']['mark2']['flavor']
-  log "assuming mark2 init style required for using alternate flavors"
+  log 'assuming mark2 init style required for using alternate flavors'
   node.override['minecraft']['init_style'] = 'mark2'
 
-  include_recipe "minecraft::mark2"
+  include_recipe 'minecraft::mark2'
 
-  execute "fetching flavored minecraft" do
+  execute 'fetching flavored minecraft' do
     cwd node['minecraft']['install_dir']
     command "mark2 jar-get #{node['minecraft']['mark2']['flavor']}"
     not_if { File.exists? "#{node['minecraft']['install_dir']}/#{node['minecraft']['mark2']['flavor']}.jar" }
   end
 
   # annoying, but done so we have a known filename for idempotency
-  execute "rename fetched jar" do
+  execute 'rename fetched jar' do
     cwd node['minecraft']['install_dir']
     command "mv *.jar #{node['minecraft']['mark2']['flavor']}.jar"
     not_if { File.exists? "#{node['minecraft']['install_dir']}/#{node['minecraft']['mark2']['flavor']}.jar" }
   end
 
-  node.override['minecraft']['mark2']['properties']['jar-path'] = "*.jar"
+  node.override['minecraft']['mark2']['properties']['jar-path'] = '*.jar'
 
 else
 
