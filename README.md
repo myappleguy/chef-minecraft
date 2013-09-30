@@ -22,8 +22,6 @@ Tested on chef 11
 
 ### Platforms
 
-Supported platforms:
-
 * Debian 6+
 * Ubuntu 12.04+
 * Centos 6.4+
