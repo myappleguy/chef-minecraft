@@ -2,113 +2,135 @@
 
 ##Description
 
-Installs vanilla [Minecraft](http://www.minecraft.net) server.
+Installs the vanilla [Minecraft](http://www.minecraft.net) server.
+
+* Opscode Community Site: http://community.opscode.com/cookbooks/minecraft
+* Source Code: http://github.com/gregf/cookbook-minecraft
 
 ##Requirements
 
-Requires the [java](http://community.opscode.com/cookbooks/java) and [tmux](http://community.opscode.com/cookbooks/tmux) cookbooks.
+###Chef
 
-###Platform
+Tested on chef 11
+
+###Cookbooks
+
+* [java](http://community.opscode.com/cookbooks/java)
+* [runit](http://community.opscode.com/cookbooks/runit)
+* [python](http://community.opscode.com/cookbooks/python)
+* [sudo](http://community.opscode.com/cookbooks/sudo)
+
+###Platforms
 
 Supported platforms:
 
-* Debian 6
-* Ubuntu 12.04
-* Centos 6.4
+* Debian 6+
+* Ubuntu 12.04+
+* Centos 6.4+
 
-##Attributes
+### Recipes
 
-See `attributes/default.rb` for default values.
+## default
 
-#### Server setup options
+The default recipe ensures a vanilla minecraft is installed, and configured based on attributes you have specified.
 
-* `default['minecraft']['user']`
-* `default['minecraft']['install_dir']`
-* `default['minecraft']['base_url']`
-* `default['minecraft']['jar']`
+## user
 
-#### Server properties
+The user recipe is called by default, and creates a new user/group `mcserver` for the server to run as.
 
-Here are some example properties that are set in the attributes now, however you
-can set any of the properties defined here as well:
-http://www.minecraftwiki.net/wiki/Server.properties#Minecraft_server_properties
+## mark2
 
-* `default['minecraft']['properties']['banned-ips']`
-* `default['minecraft']['properties']['banned-players']`
-* `default['minecraft']['properties']['white-list-users']`
-* `default['minecraft']['properties']['ops']`
+[Mark2](https://github.com/mcdevs/mark2) is installed by default as a server wrapper. You can modify the `install_type` attribute to use runit if prefered.
 
-* `default['minecraft']['properties']['allow-nether']`
-* `default['minecraft']['properties']['level-name']`
-* `default['minecraft']['properties']['enable-query']`
-* `default['minecraft']['properties']['allow-flight']`
-* `default['minecraft']['properties']['server-port']`
-* `default['minecraft']['properties']['level-type']`
-* `default['minecraft']['properties']['enable_rcon']`
-* `default['minecraft']['properties']['level-seed']`
-* `default['minecraft']['properties']['server-ip']`
-* `default['minecraft']['properties']['max-build-height']`
-* `default['minecraft']['properties']['spawn-npcs']`
-* `default['minecraft']['properties']['white-list']`
-* `default['minecraft']['properties']['spawn-animals'] `
-* `default['minecraft']['properties']['online-mode']`
-* `default['minecraft']['properties']['pvp']`
-* `default['minecraft']['properties']['difficulty']`
-* `default['minecraft']['properties']['gamemode']`
-* `default['minecraft']['properties']['max-players']`
-* `default['minecraft']['properties']['spawn-monsters']`
-* `default['minecraft']['properties']['generate-structures']`
-* `default['minecraft']['properties']['view-distance']`
-* `default['minecraft']['properties']['motd']`
+### Attributes
 
-##Usage
+## Default
 
-Include the `minecraft` recipe and modify your run list and set any attributes
-you would like changed.
+# minecraft['user']
 
-    run_list [
-      "recipe[minecraft]"
-    ]
-    "minecraft":{
-      "motd": "Welcome all griefers!"
-      "max-players": 9001
-      "ops": ["nappa", "goku"]
-    }
+The user the minecraft server runs under, default `mcserver`
+
+# minecraft['group']
+
+The group the minecraft server runs under, default `mcserver`
+
+# minecraft['install_dir']
+
+The default location minecraft is installed to, default `/srv/minecraft`
+
+# minecraft['base_url']
+
+The base url to fetch minecarft releases from, default `https://s3.amazonaws.com/Minecraft.Download/versions`
+
+# minecraft['jar']
+
+The name of the jar file to fetch, default `minecraft_server`
+
+# minecraft['version']
+
+The version of minecraft server you want, default `1.6.4`
 
 
-##Recipes
+# minecraft['checksum']
 
-###default
+The sha256 checksum of minecraft_server.jar
 
-Include the default recipe into your run_list to install `minecraft` server.
-Configuration files are prepopulated based on values in attributes. I will keep
-the defaults in sync with upstream.
+# minecraft['xms']
 
-##TODO
+The minimum ammount of ram java allow minecraft to consume, default `512M`
 
-* Clean up attributes
-* Test kitchen
-* Bukkit support or just wait for 1.5?
+# minecraft['xmx']
 
-##License
+The maximum ammount of ram java allow minecraft to consume, default `512M`
 
-Copyright 2012, Greg Fitzgerald
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-the following conditions:
-permit persons to whom the Software is furnished to do so, subject to
+# minecraft['java-options']
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+You can use this to pass additional options to java, default blank
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+# minecraft['init_style']
 
+Current you can choose between the mark2 server wrapper and runit, default `mark2`
+
+# minecraft['banned-ips']
+
+An array of ips you would like banned, default blank
+
+# minecraft['banned-players']
+
+An array of players you would like banned, default blank
+
+# minecraft['white-list-users']
+
+An array of users you would like to white-list, default blank
+
+# minecraft['ops']
+
+An array of admins, default blank
+
+
+##Contributing
+
+1. Fork it
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Added some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create new Pull Request
+
+##License and Authors
+
+Author: Greg Fitzgerald <greg@gregf.org>
+Author: Sean Escriva <sean.escriva@gmail.com>
+
+Copyright 2013, Greg Fitzgerald.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
