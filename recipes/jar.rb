@@ -40,10 +40,10 @@ if node['minecraft']['mark2']['flavor']
 
 else
 
-  node.default['minecraft']['jar_name'] = jar_name
-
   jar_name = "#{node['minecraft']['jar']}.#{node['minecraft']['version']}.jar"
   minecraft_jar = "#{Chef::Config['file_cache_path']}/#{jar_name}"
+
+  node.default['minecraft']['jar_name'] = jar_name
 
   source_url = "#{node['minecraft']['base_url']}/#{node['minecraft']['version']}/#{jar_name}"
   log "Using #{jar_name}, stored locally as #{minecraft_jar} and fetched from #{source_url}"
