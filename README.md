@@ -100,6 +100,41 @@ e.g.
 
 `node['minecraft']['properties']['seed'] = "chef"`
 
+### Mark2
+
+You can see a full list of possible mark2 settings, and their default values
+[here](https://raw.github.com/mcdevs/mark2/master/mk2/resources/mark2.default.properties).
+
+You can adjust one of three hashes to change any of the settings for mark2.
+
+### Hashes
+
+```ruby
+minecraft['mark2']['properties']
+minecraft['mark2']['java']
+minecraft['mark2']['plugin']
+```
+
+### Examples
+
+```ruby
+node.set['mark2']['properties'] = {
+  'shutdown-timeout' => '60'
+  'log.rotate-mode' => 'daily'
+}
+
+node.set['mark2']['java'] = {
+  'cli.X.incgc' => 'true'
+}
+
+node.set['mark2']['plugin'] = {
+  'backup.enabled' => 'false'
+  '
+}
+```
+
+> **NOTE** By default both java.cli.X.ms and java.cli.X.mx are set to match the values in the default attributes file.
+
 ##Contributing
 
 1. Fork it
