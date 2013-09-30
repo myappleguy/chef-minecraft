@@ -141,13 +141,18 @@ node.set['mark2']['plugin'] = {
 
 ### Known issues
 
-Minecraft internally regenerates its configuration file every startup which  can cause the order of server.properties to change after a restart.
+Minecraft internally regenerates all of its configuration files every startup. The order of server.properties sometimes changes, timestamps are
+automatically injected and headers are injected into all the configuration files.
 
-This will cause chef to think an attribute was updated and will automatically restart the server. There isn't currently a work around for this, but it is a
-priority. There are two work arounds currently.
+This in turn causes chef to notice configuration files have been changed and will automatically restart the server again to pick up those changes. This may
+cause your server to restart frequently, without notice.
+
+This leaves you with two work arounds for now.
 
 1. Only run chef-client once a day or manually as  you need to.
 2. Set minecraft['autorestart'] = false and restart minecraft manually when you make configuration changes.
+
+I am hoping I can get this changed upstream. I will attempt to come up with a better work around in the mean time.
 
 ##Contributing
 
