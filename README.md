@@ -38,6 +38,10 @@ The default recipe ensures a vanilla minecraft is installed, and configured base
 
 The user recipe is called by default, and creates a new user/group `mcserver` for the server to run as.
 
+### service
+
+The service recipe enables the service for runit or mark2 depending on the `install_type` attribute. Defaults to `mark2`
+
 ### mark2
 
 [Mark2](https://github.com/mcdevs/mark2) is installed by default as a server wrapper. You can modify the `install_type` attribute to use runit if prefered.
@@ -96,7 +100,7 @@ The user recipe is called by default, and creates a new user/group `mcserver` fo
 You can can customize any of the settings from server.properties. They are kept up to date with upstream and you can read about each setting in more
 detail [here](http://minecraft.gamepedia.com/Server.properties#Minecraft_server_properties)
 
-e.g.
+### Example
 
 `node['minecraft']['properties']['seed'] = "chef"`
 
