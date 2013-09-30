@@ -131,7 +131,6 @@ node.set['mark2']['java'] = {
 
 node.set['mark2']['plugin'] = {
   'backup.enabled' => 'false'
-  '
 }
 ```
 
