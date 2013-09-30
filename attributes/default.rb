@@ -35,3 +35,6 @@ default['minecraft']['banned-ips']          = []
 default['minecraft']['banned-players']      = []
 default['minecraft']['white-list-users']    = []
 default['minecraft']['ops']                 = []
+
+# See the readme for an explanation
+default['minecraft']['autorestart'] = true
