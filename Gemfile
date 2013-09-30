@@ -8,5 +8,5 @@ gem 'rubocop'
 group :integration do
   gem 'berkshelf'
   gem 'test-kitchen', '~> 1.0.0.beta'
-  gem 'kitchen-digitalocean', git: 'git@github.com:gregf/kitchen-digitalocean.git'
+  gem 'kitchen-digitalocean'
 end
