@@ -30,10 +30,10 @@ when 'mark2'
   include_recipe 'minecraft::mark2'
   service 'minecraft' do
     pattern 'python /usr/local/bin/mark2'
-    start_command "sudo -u #{node['minecraft']['user']} mark2 start #{node['minecraft']['install_dir']}"
-    stop_command "sudo -u #{node['minecraft']['user']} mark2 stop #{node['minecraft']['install_dir']}"
-    restart_command "sudo -u #{node['minecraft']['user']} mark2 send ~restart"
-    reload_command "sudo -u #{node['minecraft']['user']} mark2 send ~reload"
+    start_command "su -c 'mark2 start #{node['minecraft']['install_dir']}' -s /bin/sh #{node['minecraft']['user']}"
+    stop_command "su -c 'mark2 stop #{node['minecraft']['install_dir']}' -s /bin/sh #{node['minecraft']['user']}"
+    restart_command "su -c 'mark2 send ~restart #{node['minecraft']['user']}'"
+    reload_command "su -c 'mark2 send ~reload #{node['minecraft']['user']}'"
     supports :restart => true, :reload => true, :status => false
     action [:start]
   end
