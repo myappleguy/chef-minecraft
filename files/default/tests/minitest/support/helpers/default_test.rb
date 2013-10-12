@@ -8,5 +8,3 @@ def jar_file
     "#{node['minecraft']['install_dir']}/minecraft_server.#{node['minecraft']['version']}.jar"
   end
 end
-
-
