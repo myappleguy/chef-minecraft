@@ -97,7 +97,7 @@ The service recipe enables the service for runit or mark2 depending on the `inst
 You can can customize any of the settings from server.properties. They are kept up to date with upstream and you can read about each setting in more
 detail [here](http://minecraft.gamepedia.com/Server.properties#Minecraft_server_properties)
 
-### Example
+#### Example
 
 `node['minecraft']['properties']['seed'] = "chef"`
 
@@ -108,7 +108,7 @@ You can see a full list of possible mark2 settings, and their default values
 
 You can adjust the `minecraft['mark2']['properties']` hash to change any of these settings.
 
-### Examples
+#### Example
 
 ```ruby
 node.set['mark2']['properties'] = {
