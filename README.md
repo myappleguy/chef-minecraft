@@ -114,11 +114,11 @@ You can adjust the `minecraft['mark2']['properties']` hash to change any of thes
 node.set['mark2']['properties'] = {
   'mark2' => {
     'shutdown-timeout' => '60',
-    'log.rotate-mode' => 'daily',
-  }
+    'log.rotate-mode' => 'daily'
+  },
   'java' => {
     'cli.X.incgc' => 'true'
-  }
+  },
   'plugin' => {
     'backup.enabled' => 'false'
   }
