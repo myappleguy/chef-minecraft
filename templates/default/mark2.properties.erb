@@ -1,7 +1,7 @@
 # mark2 property file dropped off by Chef!
 # Generated at: <%= Time.now.strftime("%a %b %T %Z %Y") %>
-<% node['minecraft']['mark2']['properties'].each do |k,v| %>
-<% v.each do |sk,sv|%>
+<% node['minecraft']['mark2']['properties'].each do |k,v| -%>
+<% v.each do |sk,sv| -%>
 <%= k %>.<%= sk %>=<%= sv %>
-<% end %>
-<% end %>
+<% end -%>
+<% end -%>
