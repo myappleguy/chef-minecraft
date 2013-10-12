@@ -106,30 +106,22 @@ detail [here](http://minecraft.gamepedia.com/Server.properties#Minecraft_server_
 You can see a full list of possible mark2 settings, and their default values
 [here](https://raw.github.com/mcdevs/mark2/master/mk2/resources/mark2.default.properties).
 
-You can adjust one of three hashes to change any of the settings for mark2.
-
-### Hashes
-
-```ruby
-minecraft['mark2']['properties']
-minecraft['mark2']['java']
-minecraft['mark2']['plugin']
-```
+You can adjust the `minecraft['mark2']['properties']` hash to change any of these settings.
 
 ### Examples
 
 ```ruby
 node.set['mark2']['properties'] = {
-  'shutdown-timeout' => '60'
-  'log.rotate-mode' => 'daily'
-}
-
-node.set['mark2']['java'] = {
-  'cli.X.incgc' => 'true'
-}
-
-node.set['mark2']['plugin'] = {
-  'backup.enabled' => 'false'
+  'mark2' => {
+    'shutdown-timeout' => '60',
+    'log.rotate-mode' => 'daily',
+  }
+  'java' => {
+    'cli.X.incgc' => 'true'
+  }
+  'plugin' => {
+    'backup.enabled' => 'false'
+  }
 }
 ```
 
