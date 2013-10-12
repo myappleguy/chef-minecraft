@@ -1,4 +1,5 @@
 require 'minitest/spec'
+require File.expand_path('../support/helpers', __FILE__)
 #
 ## Cookbook Name:: minecraft
 ## Spec:: default
@@ -12,7 +13,7 @@ describe_recipe 'minecraft::default' do
   end
 
   describe 'ensures minecraft jar exists' do
-    let(:jar) { file("#{node['minecraft']['install_dir']}/minecraft_server.#{node['minecraft']['version']}.jar") }
+    let(:jar) { file(jar_file) }
     it { jar.must_have(:mode, '0644') }
     it { jar.must_have(:owner, node['minecraft']['user']) }
     it { jar.must_have(:group, node['minecraft']['group']) }
