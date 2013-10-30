@@ -31,10 +31,10 @@ default['minecraft']['xmx']                 = '512M'
 default['minecraft']['java-options']        = ''
 default['minecraft']['init_style']          = 'mark2'
 
+default['minecraft']['ops']                 = []
 default['minecraft']['banned-ips']          = []
 default['minecraft']['banned-players']      = []
-default['minecraft']['white-list-users']    = []
-default['minecraft']['ops']                 = []
+default['minecraft']['white-list']          = []
 
 # See the readme for an explanation
 default['minecraft']['autorestart'] = true
