@@ -87,7 +87,7 @@ The service recipe enables the service for runit or mark2 depending on the `inst
 * `minecraft['banned-players']`
   - An array of players you would like banned, default blank
 
-* `minecraft['white-list-users']`
+* `minecraft['white-list]`
   - An array of users you would like to white-list, default blank
 
 * `minecraft['ops']`
