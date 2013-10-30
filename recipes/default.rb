@@ -54,14 +54,23 @@ end
 
 include_recipe 'minecraft::service'
 
-%w[ops.txt server.properties banned-ips.txt
-   banned-players.txt white-list.txt].each do |template|
-  template "#{node['minecraft']['install_dir']}/#{template}" do
-    source "#{template}.erb"
-    owner node['minecraft']['user']
-    group node['minecraft']['group']
-    mode 0644
-    action :create
-    notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
+template "#{node['minecraft']['install_dir']}/server.properties" do
+  owner node['minecraft']['user']
+  group node['minecraft']['group']
+  mode 0644
+  action :create
+  notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
+end
+
+%w[ops banned-ips banned-players white-list].each do |f|
+  if node['minecraft']["#{f}"]
+    file "#{node['minecraft']['install_dir']}/#{f}.txt" do
+      owner node['minecraft']['user']
+      group node['minecraft']['group']
+      mode 0644
+      action :create
+      content node['minecraft']["#{f}"].join("\n") + "\n"
+      notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
+    end
   end
 end
