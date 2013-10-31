@@ -63,13 +63,13 @@ template "#{node['minecraft']['install_dir']}/server.properties" do
 end
 
 %w[ops banned-ips banned-players white-list].each do |f|
-  if node['minecraft']["#{f}"]
+  if node['minecraft'][f]
     file "#{node['minecraft']['install_dir']}/#{f}.txt" do
       owner node['minecraft']['user']
       group node['minecraft']['group']
       mode 0644
       action :create
-      content node['minecraft']["#{f}"].join("\n") + "\n"
+      content node['minecraft'][f].join("\n") + "\n"
       notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
     end
   end
