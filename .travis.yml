@@ -5,4 +5,5 @@ rvm:
   - 2.0
 bundler_args: --without integration
 script:
+  - bundle exec berks install
   - bundle exec strainer test
