@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'chef', '>=11.0'
-gem 'rake'
-gem 'foodcritic'
+gem 'strainer'
+gem 'foodcritic', '~> 3.0'
 gem 'rubocop'
 
 group :integration do
