@@ -17,8 +17,6 @@ Tested on chef 11
 
 * [java](http://community.opscode.com/cookbooks/java)
 * [runit](http://community.opscode.com/cookbooks/runit)
-* [python](http://community.opscode.com/cookbooks/python)
-* [sudo](http://community.opscode.com/cookbooks/sudo)
 
 ### Platforms
 
@@ -38,11 +36,7 @@ The user recipe is called by default, and creates a new user/group `mcserver` fo
 
 ### service
 
-The service recipe enables the service for runit or mark2 depending on the `install_type` attribute. Defaults to `mark2`
-
-### mark2
-
-[Mark2](https://github.com/mcdevs/mark2) is installed by default as a server wrapper. You can modify the `install_type` attribute to use runit if prefered.
+The service recipe enables the runit service for minecraft.
 
 ## Attributes
 
@@ -79,7 +73,7 @@ The service recipe enables the service for runit or mark2 depending on the `inst
   - You can use this to pass additional options to java, default blank
 
 * `minecraft['init_style']`
-  - Current you can choose between the mark2 server wrapper and runit, default `mark2`
+  - Currently only runit is support. default `runit`
 
 * `minecraft['banned-ips']`
   - An array of ips you would like banned, default blank
@@ -97,44 +91,6 @@ The service recipe enables the service for runit or mark2 depending on the `inst
 
 You can can customize any of the settings from server.properties. They are kept up to date with upstream and you can read about each setting in more
 detail [here](http://minecraft.gamepedia.com/Server.properties#Minecraft_server_properties)
-
-### Example
-
-`node['minecraft']['properties']['seed'] = "chef"`
-
-### Mark2
-
-You can see a full list of possible mark2 settings, and their default values
-[here](https://raw.github.com/mcdevs/mark2/master/mk2/resources/mark2.default.properties).
-
-You can adjust one of three hashes to change any of the settings for mark2.
-
-### Hashes
-
-```ruby
-minecraft['mark2']['properties']
-minecraft['mark2']['java']
-minecraft['mark2']['plugin']
-```
-
-### Examples
-
-```ruby
-node.set['mark2']['properties'] = {
-  'shutdown-timeout' => '60'
-  'log.rotate-mode' => 'daily'
-}
-
-node.set['mark2']['java'] = {
-  'cli.X.incgc' => 'true'
-}
-
-node.set['mark2']['plugin'] = {
-  'backup.enabled' => 'false'
-}
-```
-
-> **NOTE** By default both java.cli.X.ms and java.cli.X.mx are set to match the values in the default attributes file.
 
 ### Known issues
 
