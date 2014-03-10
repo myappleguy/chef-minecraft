@@ -7,6 +7,7 @@ gem 'rubocop'
 gem 'berkshelf'
 
 group :integration do
-  gem 'test-kitchen', '~> 1.0.0.beta'
+  gem 'test-kitchen'
   gem 'kitchen-digitalocean'
+  gem 'kitchen-vagrant'
 end
