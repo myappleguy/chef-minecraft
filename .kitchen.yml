@@ -12,7 +12,7 @@ platforms:
   driver_config:
     image_id: 284203
   run_list:
-  - recipe[apt]
+  - recipe[ubuntu]
 
 - name: debian-6.0.7
   driver_config:
