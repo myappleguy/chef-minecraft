@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5 (March 12, 2013)
+
+* ChefSpec goodness
+* [@webframp](https://github.com/webframp) [PR #28] Minor changes for minecraft 1.7.5
+* [@jtimberman](https://github.com/jtimberman) [PR #27] Remove timestamps from templates
+* Removed support for Mark2. See [this](https://github.com/gregf/cookbook-minecraft/commit/a5a6a023a6c208304fc1cb5ed2748034ed7ba61f) commit for more information.
+
 ## 0.4 (September 30, 2013)
 
 > **Breaking Changes** There has been a lot of changes in this release, make sure you read everything carefully.
