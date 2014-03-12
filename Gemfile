@@ -21,5 +21,5 @@ end
 
 group :development do
   gem 'rake'
-  gem 'stove'
+  gem 'stove', '~> 2.0.0.beta2'
 end
