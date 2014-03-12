@@ -8,6 +8,9 @@ require 'stove/rake_task'
 Stove::RakeTask.new do |stove|
   stove.git = true
   stove.jira = false
+  stove.changelog = false
+  stove.bump = false
+  stove.dev = false
 end
 
 # Style tests. Rubocop and Foodcritic
