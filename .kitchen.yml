@@ -1,46 +1,32 @@
 ---
 driver_plugin: digitalocean
 driver_config:
-  digitalocean_client_id: <%= ENV['DO_CLIENT_ID'] %>
-  digitalocean_api_key: <%= ENV['DO_API_KEY'] %>
   flavor_id: 63
-  ssh_key_ids: <%= ENV['DO_SSH_KEY_IDS'] %>
   require_chef_omnibus: latest
 
 platforms:
-- name: ubuntu-12.04
-  driver_config:
-    image_id: 284203
+- name: ubuntu-12.10
   run_list:
   - recipe[ubuntu]
-
-- name: debian-6.0.7
-  driver_config:
-    image_id: 12573
+- name: ubuntu-13.04
+  run_list:
+  - recipe[ubuntu]
+- name: debian-6.0
+  provisioner:
+    sudo: false
+  busser:
+    sudo: false
   run_list:
   - recipe[apt]
-
-- name: centos-6.4
-  driver_config:
-    image_id: 365680
+- name: debian-7.0
   run_list:
-  - recipe[yum::epel]
+  - recipe[apt]
+- name: centos-6.5
+  run_list:
+  - recipe[yum-epel]
 suites:
 - name: default
   run_list:
   - recipe[minitest-handler]
   - recipe[minecraft]
   attributes:
-    minecraft:
-      mark2:
-        properties:
-          shutdown-timeout: 60
-        plugin:
-          backup.enabled: false
-- name: runit
-  run_list:
-  - recipe[minitest-handler]
-  - recipe[minecraft]
-  attributes:
-    minecraft:
-      init_style: "runit"
