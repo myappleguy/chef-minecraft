@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5 (March 12, 2013)
+## 0.5.0 (March 12, 2013)
 
 * ChefSpec goodness
 * [@webframp](https://github.com/webframp) [PR #28] Minor changes for minecraft 1.7.5

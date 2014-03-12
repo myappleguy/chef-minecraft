@@ -2,6 +2,13 @@ require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'foodcritic'
 require 'kitchen'
+require 'stove/rake_task'
+
+# Cookbook Releases
+Stove::RakeTask.new do |stove|
+  stove.git = true
+  stove.jira = false
+end
 
 # Style tests. Rubocop and Foodcritic
 namespace :style do
