@@ -41,7 +41,7 @@ end
 directory node['minecraft']['install_dir'] do
   owner node['minecraft']['user']
   group node['minecraft']['group']
-  mode '0755'
+  mode 0755
   action :create
   recursive true
 end
@@ -62,15 +62,13 @@ template "#{node['minecraft']['install_dir']}/server.properties" do
   notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
 end
 
-%w[ops banned-ips banned-players white-list].each do |f|
-  if node['minecraft'][f]
-    file "#{node['minecraft']['install_dir']}/#{f}.txt" do
-      owner node['minecraft']['user']
-      group node['minecraft']['group']
-      mode 0644
-      action :create
-      content node['minecraft'][f].join("\n") + "\n"
-      notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
-    end
+%w{ops banned-ips banned-players white-list}.each do |f|
+  file "#{node['minecraft']['install_dir']}/#{f}.txt" do
+    owner node['minecraft']['user']
+    group node['minecraft']['group']
+    mode 0644
+    action :create
+    content node['minecraft'][f].join("\n") + "\n"
+    notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
   end
 end
