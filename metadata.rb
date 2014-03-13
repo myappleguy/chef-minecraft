@@ -8,14 +8,10 @@ name              'minecraft'
 
 recipe 'minecraft', 'Installs and configures minecraft server.'
 
-%w{ java runit ohai }.each do |dep|
+%w{ java runit ohai apt yum }.each do |dep|
   depends dep
 end
 
 %w{ debian ubuntu centos }.each do |os|
   supports os
-end
-
-%w{ debian ubuntu }.each do |os|
-  depends apt
 end
