@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe 'minecraft attributes' do
-  cached(:chef_run) { ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0').converge('minecraft::default') }
+  cached(:chef_run) do
+    ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
+      node.automatic['memory']['total'] = '2097152kB'
+    end.converge('minecraft::default')
+  end
   cached(:minecraft) { chef_run.node['minecraft'] }
 
   describe 'on an debian system' do
@@ -31,8 +35,8 @@ describe 'minecraft attributes' do
     end
 
     it 'sets some default options for java' do
-      expect(minecraft['xms']).to eq('512M')
-      expect(minecraft['xmx']).to eq('512M')
+      expect(minecraft['xms']).to eq('819M')
+      expect(minecraft['xmx']).to eq('1228M')
     end
 
     it 'sets java-options to be a empty string' do

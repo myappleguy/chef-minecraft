@@ -8,6 +8,7 @@ describe 'minecraft::default' do
         node.set['minecraft']['banned-ips'] = ['10.1.2.3', '10.1.100.10']
         node.set['minecraft']['banned-players'] = %w{gregf sandal82}
         node.set['minecraft']['white-list'] = %w{gregf sandal82}
+        node.automatic['memory']['total'] = '2097152kB'
       end.converge(described_recipe)
     end
     cached(:minecraft_jar) { '/var/chef/cache/minecraft_server.1.7.5.jar' }
@@ -138,7 +139,11 @@ end
 
 describe 'minecraft::user' do
   context 'creates a user for the minecraft server' do
-    cached(:chef_run) { ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0').converge(described_recipe) }
+    cached(:chef_run) do
+      ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
+        node.automatic['memory']['total'] = '2097152kB'
+      end.converge(described_recipe)
+    end
 
     it 'creates a user with attributes' do
       expect(chef_run).to create_user('mcserver').with(
