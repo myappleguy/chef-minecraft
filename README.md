@@ -64,10 +64,10 @@ The service recipe enables the runit service for minecraft.
   - The sha256 checksum of minecraft_server.jar
 
 * `minecraft['xms']`
-  - The minimum ammount of ram java allow minecraft to consume, default `512M`
+  - The minimum ammount of ram java allow minecraft to consume, defaults to %40 of your total memory.
 
 * `minecraft['xmx']`
-  - The maximum ammount of ram java allow minecraft to consume, default `512M`
+  - The maximum ammount of ram java allow minecraft to consume, defaults to %60 of your total memory.
 
 * `minecraft['java-options']`
   - You can use this to pass additional options to java, default blank
