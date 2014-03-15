@@ -18,25 +18,9 @@
 #
 
 include_recipe 'java::default'
-
-jar_name = "#{node['minecraft']['jar']}.#{node['minecraft']['version']}.jar"
-minecraft_jar = "#{Chef::Config['file_cache_path']}/#{jar_name}"
-
-node.default['minecraft']['jar_name'] = jar_name
-
-source_url = "#{node['minecraft']['base_url']}/#{node['minecraft']['version']}/#{jar_name}"
-log "Using #{jar_name}, stored locally as #{minecraft_jar} and fetched from #{source_url}"
-
 include_recipe 'minecraft::user'
 
-remote_file minecraft_jar do
-  source source_url
-  checksum node['minecraft']['checksum']
-  owner node['minecraft']['user']
-  group node['minecraft']['group']
-  mode 0644
-  action :create_if_missing
-end
+jar_name = minecraft_file(node['minecraft']['url'])
 
 directory node['minecraft']['install_dir'] do
   owner node['minecraft']['user']
@@ -46,10 +30,13 @@ directory node['minecraft']['install_dir'] do
   recursive true
 end
 
-execute 'copy-minecraft_server.jar' do
-  cwd node['minecraft']['install_dir']
-  command "cp -p #{minecraft_jar} ."
-  creates "#{node['minecraft']['install_dir']}/#{jar_name}"
+remote_file "#{node['minecraft']['install_dir']}/#{jar_name}" do
+  source node['minecraft']['url']
+  checksum node['minecraft']['checksum']
+  owner node['minecraft']['user']
+  group node['minecraft']['group']
+  mode 0644
+  action :create_if_missing
 end
 
 include_recipe 'minecraft::service'

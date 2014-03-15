@@ -19,10 +19,8 @@
 
 default['minecraft']['user']                = 'mcserver'
 default['minecraft']['group']               = 'mcserver'
+default['minecraft']['url']                 = 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.5/minecraft_server.1.7.5.jar'
 default['minecraft']['install_dir']         = '/srv/minecraft'
-default['minecraft']['base_url']            = 'https://s3.amazonaws.com/Minecraft.Download/versions'
-default['minecraft']['jar']                 = 'minecraft_server'
-default['minecraft']['version']             = '1.7.5'
 default['minecraft']['checksum']            = 'f8224a78faec7faf0b03c3655c3d04d741c680dd1923853ba15e00cddd807a38'
 
 # Defaults to 40% of your total memory.

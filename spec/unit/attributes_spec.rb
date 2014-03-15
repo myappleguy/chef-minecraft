@@ -18,16 +18,8 @@ describe 'minecraft attributes' do
       expect(minecraft['install_dir']).to eq('/srv/minecraft')
     end
 
-    it 'has a base_url' do
-      expect(minecraft['base_url']).to eq('https://s3.amazonaws.com/Minecraft.Download/versions')
-    end
-
-    it 'sets a jar name' do
-      expect(minecraft['jar']).to eq('minecraft_server')
-    end
-
-    it 'has a version to be defined' do
-      expect(minecraft['version']).to match(/\d.\d.\d/)
+    it 'has a url' do
+      expect(minecraft['url']).to match(/http.+minecraft_server.\d.\d.\d\.jar/)
     end
 
     it 'has contains a valid checksum' do

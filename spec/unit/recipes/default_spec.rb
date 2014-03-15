@@ -11,7 +11,7 @@ describe 'minecraft::default' do
         node.automatic['memory']['total'] = '2097152kB'
       end.converge(described_recipe)
     end
-    cached(:minecraft_jar) { '/var/chef/cache/minecraft_server.1.7.5.jar' }
+    cached(:minecraft_jar) { '/srv/minecraft/minecraft_server.1.7.5.jar' }
 
     it 'includes default java recipe' do
       expect(chef_run).to include_recipe('java::default')
@@ -35,13 +35,6 @@ describe 'minecraft::default' do
         group: 'mcserver',
         mode: 0755,
         recursive: true
-      )
-    end
-
-    it 'copies the jar file to the minecraft directory' do
-      expect(chef_run).to run_execute('copy-minecraft_server.jar').with(
-        cwd: '/srv/minecraft',
-        command: "cp -p #{minecraft_jar} ."
       )
     end
 

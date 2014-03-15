@@ -51,14 +51,8 @@ The service recipe enables the runit service for minecraft.
 * `minecraft['install_dir']`
   - The default location minecraft is installed to, default `/srv/minecraft`
 
-* `minecraft['base_url']`
-  - The base url to fetch minecarft releases from, default `https://s3.amazonaws.com/Minecraft.Download/versions`
-
-* `minecraft['jar']`
-  - The name of the jar file to fetch, default `minecraft_server`
-
-* `minecraft['version']`
-  - The version of minecraft server you want, default `1.6.4`
+* `minecraft['url']`
+  - The url to fetch minecarft releases from, default `https://s3.amazonaws.com/Minecraft.Download/versions`
 
 * `minecraft['checksum']`
   - The sha256 checksum of minecraft_server.jar
