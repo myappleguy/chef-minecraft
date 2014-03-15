@@ -4,10 +4,10 @@ describe 'minecraft::default' do
   context 'install minecraft defaults' do
     cached(:chef_run) do
       ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
-        node.set['minecraft']['ops'] = %w{gregf sandal82}
-        node.set['minecraft']['banned-ips'] = ['10.1.2.3', '10.1.100.10']
-        node.set['minecraft']['banned-players'] = %w{gregf sandal82}
-        node.set['minecraft']['white-list'] = %w{gregf sandal82}
+        node.set['minecraft']['ops'] = %w(gregf sandal82)
+        node.set['minecraft']['banned-ips'] = %w(10.1.2.3, 10.1.100.10)
+        node.set['minecraft']['banned-players'] = %w(gregf sandal82)
+        node.set['minecraft']['white-list'] = %w(gregf sandal82)
         node.automatic['memory']['total'] = '2097152kB'
       end.converge(described_recipe)
     end

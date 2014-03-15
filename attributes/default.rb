@@ -25,8 +25,11 @@ default['minecraft']['jar']                 = 'minecraft_server'
 default['minecraft']['version']             = '1.7.5'
 default['minecraft']['checksum']            = 'f8224a78faec7faf0b03c3655c3d04d741c680dd1923853ba15e00cddd807a38'
 
-default['minecraft']['xms']                 = "#{(node['memory']['total'].to_i * 0.4 ).floor / 1024}M"
-default['minecraft']['xmx']                 = "#{(node['memory']['total'].to_i * 0.6 ).floor / 1024}M"
+# Defaults to 40% of your total memory.
+default['minecraft']['xms']                 = "#{(node['memory']['total'].to_i * 0.4).floor / 1024}M"
+# Defaults to 60% of your total memory.
+default['minecraft']['xmx']                 = "#{(node['memory']['total'].to_i * 0.6).floor / 1024}M"
+
 # Additional options to be passed to java, for runit only
 default['minecraft']['java-options']        = ''
 default['minecraft']['init_style']          = 'runit'

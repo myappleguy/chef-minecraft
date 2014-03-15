@@ -62,7 +62,7 @@ template "#{node['minecraft']['install_dir']}/server.properties" do
   notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
 end
 
-%w{ops banned-ips banned-players white-list}.each do |f|
+%w(ops banned-ips banned-players white-list).each do |f|
   file "#{node['minecraft']['install_dir']}/#{f}.txt" do
     owner node['minecraft']['user']
     group node['minecraft']['group']
