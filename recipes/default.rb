@@ -40,6 +40,7 @@ remote_file "#{node['minecraft']['install_dir']}/#{jar_name}" do
 end
 
 include_recipe 'minecraft::service'
+include_recipe "minecraft::#{node['minecraft']['install_type']}"
 
 template "#{node['minecraft']['install_dir']}/server.properties" do
   owner node['minecraft']['user']
