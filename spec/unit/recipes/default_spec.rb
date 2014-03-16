@@ -129,36 +129,3 @@ describe 'minecraft::default' do
     end
   end
 end
-
-describe 'minecraft::user' do
-  context 'creates a user for the minecraft server' do
-    cached(:chef_run) do
-      ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
-        node.automatic['memory']['total'] = '2097152kB'
-      end.converge(described_recipe)
-    end
-
-    it 'creates a user with attributes' do
-      expect(chef_run).to create_user('mcserver').with(
-        shell: '/bin/false',
-        gid: 'mcserver',
-        home: '/srv/minecraft'
-      )
-    end
-  end
-end
-
-describe 'minecraft::service' do
-  context 'starts the minecraft service' do
-    cached(:chef_run) { ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0').converge(described_recipe) }
-    it 'enables the service' do
-      # expect(chef_run).to enable_runit_service('minecraft')
-      pending 'New release of the runit cookbook'
-    end
-
-    it 'starts the service' do
-      # expect(chef_run).to start_runit_service('minecraft')
-      pending 'New release of the runit cookbook'
-    end
-  end
-end
