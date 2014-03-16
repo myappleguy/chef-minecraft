@@ -30,3 +30,10 @@ suites:
   - recipe[minitest-handler]
   - recipe[minecraft]
   attributes:
+- name: bukkit
+  run_list:
+  - recipe[minitest-handler]
+  - recipe[minecraft]
+  attributes:
+    minecraft:
+      install_type: "bukkit"
