@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'minecraft::default' do
   context 'install minecraft defaults' do
-    cached(:vanilla_run) do
+    let(:vanilla_run) do
       ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
         node.set['minecraft']['install_type'] = 'vanilla'
         node.automatic['memory']['total'] = '2097152kB'

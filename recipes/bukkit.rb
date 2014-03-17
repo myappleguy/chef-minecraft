@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe 'minecraft::service'
-
 %w(bukkit.yml commands.yml help.yml permissions.yml).each do |f|
   template "#{node['minecraft']['install_dir']}/#{f}" do
     owner node['minecraft']['user']

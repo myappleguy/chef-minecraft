@@ -2,16 +2,16 @@ require 'spec_helper'
 
 describe 'minecraft::default' do
   context 'install minecraft defaults' do
-    cached(:bukkit_run) do
+    let(:bukkit_run) do
       ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
         node.set['minecraft']['install_type'] = 'bukkit'
         node.automatic['memory']['total'] = '2097152kB'
       end.converge(described_recipe)
     end
-    cached(:minecraft_jar) { '/srv/minecraft/craftbukkit.jar' }
+    let(:minecraft_jar) { '/srv/minecraft/craftbukkit.jar' }
 
     context 'renders the bukkit.yml template' do
-      cached(:template) { bukkit_run.template('/srv/minecraft/bukkit.yml') }
+      let(:template) { bukkit_run.template('/srv/minecraft/bukkit.yml') }
 
       it 'renders the template' do
         expect(bukkit_run).to render_file(template.path).with_content('settings:')
@@ -28,7 +28,7 @@ describe 'minecraft::default' do
     end
 
     context 'renders the permissions.yml template' do
-      cached(:template) { bukkit_run.template('/srv/minecraft/permissions.yml') }
+      let(:template) { bukkit_run.template('/srv/minecraft/permissions.yml') }
 
       it 'renders the template' do
         expect(bukkit_run).to render_file(template.path)
@@ -45,7 +45,7 @@ describe 'minecraft::default' do
     end
 
     context 'renders the help.yml template' do
-      cached(:template) { bukkit_run.template('/srv/minecraft/help.yml') }
+      let(:template) { bukkit_run.template('/srv/minecraft/help.yml') }
 
       it 'renders the template' do
         expect(bukkit_run).to render_file(template.path)
@@ -62,7 +62,7 @@ describe 'minecraft::default' do
     end
 
     context 'renders the commands.yml template' do
-      cached(:template) { bukkit_run.template('/srv/minecraft/commands.yml') }
+      let(:template) { bukkit_run.template('/srv/minecraft/commands.yml') }
 
       it 'renders the template' do
         expect(bukkit_run).to render_file(template.path).with_content('icanhasbukkit:')

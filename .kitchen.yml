@@ -38,3 +38,11 @@ suites:
   attributes:
     minecraft:
       install_type: "bukkit"
+- name: spigot
+  run_list:
+  - recipe[minitest-handler]
+  - recipe[minecraft]
+  - recipe[minecraft-test]
+  attributes:
+    minecraft:
+      install_type: "spigot"

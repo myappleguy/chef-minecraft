@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'minecraft::default' do
   context 'install minecraft defaults' do
-    cached(:chef_run) do
+    let(:chef_run) do
       ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
         node.set['minecraft']['ops'] = %w(gregf sandal82)
         node.set['minecraft']['banned-ips'] = %w(10.1.2.3 10.1.100.10)
@@ -11,7 +11,7 @@ describe 'minecraft::default' do
         node.automatic['memory']['total'] = '2097152kB'
       end.converge(described_recipe)
     end
-    cached(:minecraft_jar) { '/srv/minecraft/minecraft_server.1.7.5.jar' }
+    let(:minecraft_jar) { '/srv/minecraft/minecraft_server.1.7.5.jar' }
 
     it 'includes default java recipe' do
       expect(chef_run).to include_recipe('java::default')
@@ -39,7 +39,7 @@ describe 'minecraft::default' do
     end
 
     context 'renders the server.properties template' do
-      cached(:template) { chef_run.template('/srv/minecraft/server.properties') }
+      let(:template) { chef_run.template('/srv/minecraft/server.properties') }
 
       it 'renders the template' do
         expect(chef_run).to render_file(template.path).with_content('# Minecraft server properties')
@@ -56,7 +56,7 @@ describe 'minecraft::default' do
     end
 
     context 'creates ops.txt' do
-      cached(:ops) { chef_run.file('/srv/minecraft/ops.txt') }
+      let(:ops) { chef_run.file('/srv/minecraft/ops.txt') }
 
       it 'creates ops.txt' do
         expect(chef_run).to create_file(ops.path).with_content("gregf\nsandal82\n")
@@ -73,7 +73,7 @@ describe 'minecraft::default' do
     end
 
     context 'creates banned-ips.txt' do
-      cached(:banned_ips) { chef_run.file('/srv/minecraft/banned-ips.txt') }
+      let(:banned_ips) { chef_run.file('/srv/minecraft/banned-ips.txt') }
 
       it 'creates banned-ips.txt' do
         expect(chef_run).to create_file(banned_ips.path).with_content("10.1.2.3\n10.1.100.10\n")
@@ -90,7 +90,7 @@ describe 'minecraft::default' do
     end
 
     context 'creates banned-players.txt' do
-      cached(:banned_players) { chef_run.file('/srv/minecraft/banned-players.txt') }
+      let(:banned_players) { chef_run.file('/srv/minecraft/banned-players.txt') }
 
       it 'creates banned-ips.txt' do
         expect(chef_run).to create_file(banned_players.path).with_content("gregf\nsandal82\n")
@@ -107,7 +107,7 @@ describe 'minecraft::default' do
     end
 
     context 'creates white-list.txt' do
-      cached(:white_list) { chef_run.file('/srv/minecraft/white-list.txt') }
+      let(:white_list) { chef_run.file('/srv/minecraft/white-list.txt') }
 
       it 'creates banned-ips.txt' do
         expect(chef_run).to create_file(white_list.path).with_content("gregf\nsandal82\n")

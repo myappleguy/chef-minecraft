@@ -4,7 +4,7 @@ require 'minitest/spec'
 ## Spec:: default
 
 describe_recipe 'minecraft::default' do
-  describe 'ensures minecraft jar exists' do
+  describe 'ensures craftbukkit jar exists' do
     let(:jar) { file("#{node['minecraft']['install_dir']}/#{minecraft_file(node['minecraft']['url'])}") }
     it { jar.must_have(:mode, '0644') }
     it { jar.must_have(:owner, node['minecraft']['user']) }

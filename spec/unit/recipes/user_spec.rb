@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'minecraft::user' do
   context 'creates a user for the minecraft server' do
-    cached(:chef_run) do
+    let(:chef_run) do
       ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
         node.automatic['memory']['total'] = '2097152kB'
       end.converge(described_recipe)

@@ -17,8 +17,8 @@
 action :install do
   plugin_jar = minecraft_file(new_resource.url)
 
-  unless node['minecraft']['install_type'] == 'bukkit'
-    Chef::Log.warn('The minecraft_plugin LWRP only works if your install_type is set to bukkit')
+  if node['minecraft']['install_type'] == 'vanilla'
+    Chef::Log.warn('The minecraft_plugin LWRP only works if your install_type is set to bukkit or spigot')
   end
 
   directory "#{node['minecraft']['install_dir']}/plugins" do

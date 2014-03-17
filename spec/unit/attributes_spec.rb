@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe 'minecraft attributes' do
-  cached(:chef_run) do
+  let(:chef_run) do
     ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0') do |node|
       node.automatic['memory']['total'] = '2097152kB'
     end.converge('minecraft::default')
   end
-  cached(:minecraft) { chef_run.node['minecraft'] }
+  let(:minecraft) { chef_run.node['minecraft'] }
 
   describe 'on an debian system' do
     it 'sets the default user & group' do
