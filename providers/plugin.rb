@@ -17,7 +17,7 @@
 action :install do
   plugin_jar = minecraft_file(new_resource.url)
 
-  d = directory "#{node['minecraft']['install_dir']}/plugins" do
+  directory "#{node['minecraft']['install_dir']}/plugins" do
     recursive true
     owner node['minecraft']['user']
     group node['minecraft']['group']
