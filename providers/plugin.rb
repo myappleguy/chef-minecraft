@@ -17,6 +17,10 @@
 action :install do
   plugin_jar = minecraft_file(new_resource.url)
 
+  unless node['minecraft']['install_type'] == 'bukkit'
+    Chef::Log.warn('The minecraft_plugin LWRP only works if your install_type is set to bukkit')
+  end
+
   directory "#{node['minecraft']['install_dir']}/plugins" do
     recursive true
     owner node['minecraft']['user']
