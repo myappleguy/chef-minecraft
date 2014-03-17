@@ -18,16 +18,17 @@
 #
 
 include_recipe 'java::default'
+include_recipe 'runit'
 include_recipe 'minecraft::user'
 
 jar_name = minecraft_file(node['minecraft']['url'])
 
 directory node['minecraft']['install_dir'] do
+  recursive true
   owner node['minecraft']['user']
   group node['minecraft']['group']
   mode 0755
   action :create
-  recursive true
 end
 
 remote_file "#{node['minecraft']['install_dir']}/#{jar_name}" do
@@ -47,7 +48,7 @@ template "#{node['minecraft']['install_dir']}/server.properties" do
   group node['minecraft']['group']
   mode 0644
   action :create
-  notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
+  notifies :restart, 'runit_service[minecraft]', :delayed if node['minecraft']['autorestart']
 end
 
 %w(ops banned-ips banned-players white-list).each do |f|
@@ -57,6 +58,6 @@ end
     mode 0644
     action :create
     content node['minecraft'][f].join("\n") + "\n"
-    notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
+    notifies :restart, 'runit_service[minecraft]', :delayed if node['minecraft']['autorestart']
   end
 end

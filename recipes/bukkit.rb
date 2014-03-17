@@ -25,6 +25,6 @@ include_recipe 'minecraft::service'
     group node['minecraft']['group']
     mode 0644
     action :create
-    notifies :reload, 'service[minecraft]' if node['minecraft']['autorestart']
+    notifies :restart, 'runit_service[minecraft]', :delayed if node['minecraft']['autorestart']
   end
 end

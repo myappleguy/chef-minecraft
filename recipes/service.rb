@@ -20,7 +20,6 @@
 
 case node['minecraft']['init_style']
 when 'runit'
-  include_recipe 'runit'
   runit_service 'minecraft' do
     options({
       :install_dir => node['minecraft']['install_dir'],
@@ -31,9 +30,6 @@ when 'runit'
       :options     => node['minecraft']['java-options'],
       :jar_name    => minecraft_file(node['minecraft']['url'])
     }.merge(params))
-  end
-  service 'minecraft' do
-    supports :status => true, :restart => true, :reload => true
-    reload_command "#{node['runit']['sv_bin']} hup #{node['runit']['service_dir']}/minecraft"
+    action [:enable, :start]
   end
 end
