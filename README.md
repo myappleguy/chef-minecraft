@@ -1,4 +1,4 @@
-# Minecraft [![Build Status](https://secure.travis-ci.org/gregf/cookbook-minecraft.png)](http://travis-ci.org/gregf/cookbook-minecraft)
+# Minecraft [![Build Status](https://secure.travis-ci.org/gregf/cookbook-minecraft.png)](http://travis-ci.org/gregf/cookbook-minecraft) [Cookbook Version](https://img.shields.io/cookbook/v/minecraft.svg)](https://community.opscode.com/cookbooks/minecraft)
 
 ## Description
 
