@@ -49,5 +49,8 @@ default['minecraft']['banned-ips']          = []
 default['minecraft']['banned-players']      = []
 default['minecraft']['white-list']          = []
 
+# Stop minecraft from binding to ipv6 by default
+default['minecraft']['prefer_ipv4'] = true
+
 # See the readme for an explanation
 default['minecraft']['autorestart'] = true
