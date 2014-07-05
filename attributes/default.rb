@@ -25,8 +25,8 @@ default['minecraft']['install_type']        = 'vanilla'
 
 case node['minecraft']['install_type']
 when 'vanilla'
-  default['minecraft']['url']                 = 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.9/minecraft_server.1.7.9.jar'
-  default['minecraft']['checksum']            = 'f7b9150d05c2cf8c48541527de310557e6bd9bde73e8ac9479e8ffe722c60a21'
+  default['minecraft']['url']                 = 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/minecraft_server.1.7.10.jar'
+  default['minecraft']['checksum']            = 'c70870f00c4024d829e154f7e5f4e885b02dd87991726a3308d81f513972f3fc'
 when 'bukkit'
   default['minecraft']['url']                 = 'http://dl.bukkit.org/downloads/craftbukkit/get/02389_1.6.4-R2.0/craftbukkit.jar'
   default['minecraft']['checksum']            = '29c26ec69dcaf8c1214f90f5fa5609fc451aae5fe0d22fd4ce37a505684545b3'
