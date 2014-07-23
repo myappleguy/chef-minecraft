@@ -23,16 +23,21 @@ default['minecraft']['install_dir']         = '/srv/minecraft'
 # Currently vanilla, bukkit, spligot
 default['minecraft']['install_type']        = 'vanilla'
 
+default['java']['install_flavor']           = 'default'
+
 case node['minecraft']['install_type']
 when 'vanilla'
   default['minecraft']['url']                 = 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.9/minecraft_server.1.7.9.jar'
   default['minecraft']['checksum']            = 'f7b9150d05c2cf8c48541527de310557e6bd9bde73e8ac9479e8ffe722c60a21'
+  default['minecraft']['server_opts']         = 'nogui'
 when 'bukkit'
   default['minecraft']['url']                 = 'http://dl.bukkit.org/downloads/craftbukkit/get/02389_1.6.4-R2.0/craftbukkit.jar'
   default['minecraft']['checksum']            = '29c26ec69dcaf8c1214f90f5fa5609fc451aae5fe0d22fd4ce37a505684545b3'
+  default['minecraft']['server_opts']         = '--noconsole --online-mode true'
 when 'spigot'
   default['minecraft']['url']                 = 'http://ci.md-5.net/view/Spigot/job/Spigot/lastStableBuild/artifact/Spigot-Server/target/spigot.jar'
   default['minecraft']['checksum']            = '13abb884cb8f1bc8dfcd110fa3616f03b7ec5e23eb4b2e903b054c0ad23c4ac5'
+  default['minecraft']['server_opts']         = ''
 end
 
 # Defaults to 40% of your total memory.

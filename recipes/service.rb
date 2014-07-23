@@ -29,6 +29,7 @@ when 'runit'
       :user        => node['minecraft']['user'],
       :group       => node['minecraft']['group'],
       :java_opts   => node['minecraft']['java-options'],
+      :server_opts => node['minecraft']['server_opts'],
       :jar_name    => minecraft_file(node['minecraft']['url'])
     }.merge(params))
     action [:enable, :start]

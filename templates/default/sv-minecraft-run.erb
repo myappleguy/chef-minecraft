@@ -11,4 +11,4 @@ exec chpst -u <%= @options[:user] %>:<%= @options[:group] %> \
   -Xms<%= @options[:xms] %> \
   -Xmx<%= @options[:xmx] %> \
   -Djava.net.preferIPv4Stack=<%= @options[:prefer_ipv4] %> \
-  -jar <%= @options[:jar_name] %> nogui
+  -jar <%= @options[:jar_name] %> <%= @options[:server_opts] %>
