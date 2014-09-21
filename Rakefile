@@ -5,13 +5,7 @@ require 'kitchen'
 require 'stove/rake_task'
 
 # Cookbook Releases
-Stove::RakeTask.new do |stove|
-  stove.git = true
-  stove.jira = false
-  stove.changelog = false
-  stove.bump = false
-  stove.dev = false
-end
+Stove::RakeTask.new
 
 # Style tests. Rubocop and Foodcritic
 namespace :style do

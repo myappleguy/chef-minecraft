@@ -7,8 +7,8 @@ group :lint do
 end
 
 group :unit do
-  gem 'berkshelf', '~> 3.0.0.beta7'
-  gem 'chefspec', '~> 3.4'
+  gem 'berkshelf', '~> 3.1.5'
+  gem 'chefspec', '~> 4.0'
 end
 
 group :kitchen_common do
@@ -21,5 +21,5 @@ end
 
 group :development do
   gem 'rake'
-  gem 'stove', '~> 2.0.0.beta2'
+  gem 'stove', '~> 3.2.2'
 end
