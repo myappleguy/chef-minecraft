@@ -27,8 +27,8 @@ default['java']['install_flavor']           = 'default'
 
 case node['minecraft']['install_type']
 when 'vanilla'
-  default['minecraft']['url']                 = 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/minecraft_server.1.7.10.jar'
-  default['minecraft']['checksum']            = 'c70870f00c4024d829e154f7e5f4e885b02dd87991726a3308d81f513972f3fc'
+  default['minecraft']['url']                 = 'https://s3.amazonaws.com/Minecraft.Download/versions/1.8/minecraft_server.1.8.jar'
+  default['minecraft']['checksum']            = '40e23f3823d6f0e3cbadc491cedb55b8ba53f8ab516b68182ddd1536babeb291'
   default['minecraft']['server_opts']         = 'nogui'
 when 'bukkit'
   default['minecraft']['url']                 = 'http://dl.bukkit.org/downloads/craftbukkit/get/02389_1.6.4-R2.0/craftbukkit.jar'
