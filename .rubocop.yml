@@ -1,6 +1,9 @@
 AllCops:
-  Excludes:
-    - vendor/**
+  Exclude:
+    - bin/**/*
+    - cookbooks/**/*
+    - tmp/**/*
+    - vendor/**/*
 
 AlignParameters:
   Enabled: false
@@ -12,3 +15,5 @@ LineLength:
   Enabled: false
 MethodLength:
   Max: 30
+SingleSpaceBeforeFirstArg:
+  Enabled: false
