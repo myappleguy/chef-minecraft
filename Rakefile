@@ -31,7 +31,7 @@ desc 'Run all style checks'
 task style: ['style:chef', 'style:ruby']
 
 # Rspec and ChefSpec
-desc "Run ChefSpec examples"
+desc 'Run ChefSpec examples'
 RSpec::Core::RakeTask.new(:spec)
 
 # Integration tests. Kitchen.ci
@@ -46,7 +46,7 @@ namespace :integration do
 end
 
 desc 'Run all tests on Travis'
-task travis: ['style', 'spec']
+task travis: %w(style spec)
 
 # Default
 task default: ['style', 'spec', 'integration:digitalocean']
