@@ -3,7 +3,7 @@ require 'chefspec/berkshelf'
 
 RSpec.configure do |config|
   # Use color in STDOUT
-  config.color_enabled = true
+  config.color = true
 
   # Use color not only in STDOUT but also in pagers and files
   config.tty = true
@@ -14,5 +14,4 @@ RSpec.configure do |config|
   # :focus support to allow zooming in a single test/block
   config.filter_run :focus => true
   config.run_all_when_everything_filtered = true
-  config.treat_symbols_as_metadata_keys_with_true_values = true
 end
