@@ -77,6 +77,5 @@ describe 'minecraft::default' do
         expect(template.mode).to eq(0644)
       end
     end
-
   end
 end
