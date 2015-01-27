@@ -20,7 +20,7 @@
 default['minecraft']['user']                = 'mcserver'
 default['minecraft']['group']               = 'mcserver'
 default['minecraft']['install_dir']         = '/srv/minecraft'
-# Currently vanilla, bukkit, spligot
+# Currently vanilla, bukkit, spigot
 default['minecraft']['install_type']        = 'vanilla'
 
 default['java']['install_flavor']           = 'default'
