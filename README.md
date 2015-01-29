@@ -1,7 +1,5 @@
-# This cookbook is no longer maintained. Please take a look at [@webframp's fork](https://github.com/webframp/cookbook-minecraft)
-
 # Minecraft
-[![Build Status](https://secure.travis-ci.org/gregf/cookbook-minecraft.png)](http://travis-ci.org/gregf/cookbook-minecraft)
+[![Build Status](https://travis-ci.org/gregf/chef-minecraft.svg?branch=master)](https://travis-ci.org/gregf/chef-minecraft)
 [![Cookbook Version](https://img.shields.io/cookbook/v/minecraft.svg)](https://community.opscode.com/cookbooks/minecraft)
 
 ## Description
