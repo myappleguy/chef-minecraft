@@ -1,6 +1,6 @@
 # Minecraft
 [![Build Status](https://travis-ci.org/gregf/chef-minecraft.svg?branch=master)](https://travis-ci.org/gregf/chef-minecraft)
-[![Cookbook Version](https://img.shields.io/cookbook/v/minecraft.svg)](https://community.opscode.com/cookbooks/minecraft)
+[![Cookbook Version](https://img.shields.io/cookbook/v/minecraft.svg)](https://supermarket.chef.io/cookbooks/minecraft)
 
 ## Description
 
