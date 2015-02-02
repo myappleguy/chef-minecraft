@@ -19,7 +19,6 @@
 
 default['minecraft']['user']                = 'mcserver'
 default['minecraft']['group']               = 'mcserver'
-default['minecraft']['install_dir']         = '/srv/minecraft'
 # Currently vanilla, bukkit, spigot
 default['minecraft']['install_type']        = 'vanilla'
 
@@ -41,21 +40,30 @@ when 'spigot'
 end
 
 # Defaults to 40% of your total memory.
-default['minecraft']['xms']                 = "#{(node['memory']['total'].to_i * 0.4).floor / 1024}M"
+default['minecraft']['xms']                 = "#{(total_memory * 0.4).floor / 1024}M"
 # Defaults to 60% of your total memory.
-default['minecraft']['xmx']                 = "#{(node['memory']['total'].to_i * 0.6).floor / 1024}M"
+default['minecraft']['xmx']                 = "#{(total_memory * 0.6).floor / 1024}M"
 
 # Additional options to be passed to java, for runit only
 default['minecraft']['java-options']        = ''
-default['minecraft']['init_style']          = 'runit'
 
 default['minecraft']['ops']                 = []
 default['minecraft']['banned-ips']          = []
 default['minecraft']['banned-players']      = []
-default['minecraft']['white-list']          = []
+default['minecraft']['whitelist']          = []
 
 # Stop minecraft from binding to ipv6 by default
 default['minecraft']['prefer_ipv4'] = true
 
 # See the readme for an explanation
 default['minecraft']['autorestart'] = true
+
+case node['platform_family']
+when 'windows'
+  default['minecraft']['init_style']          = 'windows_task'
+  default['minecraft']['install_dir']         = "#{ENV['programdata']}/minecraft"
+  default['minecraft']['user_password']       = "Pass@word1"
+else
+  default['minecraft']['init_style']          = 'runit'
+  default['minecraft']['install_dir']         = '/srv/minecraft'
+end

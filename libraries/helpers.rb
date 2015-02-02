@@ -21,3 +21,14 @@ def minecraft_file(uri)
   require 'uri'
   Pathname.new(URI.parse(uri).path).basename.to_s
 end
+
+def total_memory
+  if node['platform_family'] == 'windows'
+    wmi = ::WIN32OLE.connect("winmgmts://")
+    res = wmi.ExecQuery("select Capacity from Win32_PhysicalMemory")
+    mem = res.each.next.capacity
+    mem.to_i / 1024
+  else
+    node['memory']['total'].to_i
+  end
+end
