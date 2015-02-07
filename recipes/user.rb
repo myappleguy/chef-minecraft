@@ -25,6 +25,9 @@ user node['minecraft']['user'] do
   if node['minecraft']['user_password']
     password node['minecraft']['user_password']
   end
+  if node['platform_family'] != 'windows'
+    gid node['minecraft']['group']
+  end
   action :create
 end
 
