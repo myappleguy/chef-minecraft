@@ -22,9 +22,9 @@ end
 
 def minecraft_server_files
   if uses_json
-    %w(ops banned-ips banned-players whitelist).each
+    %w(ops banned-ips banned-players whitelist)
   else
-    %w(ops banned-ips banned-players white-list).each
+    %w(ops banned-ips banned-players white-list)
   end
 end
 

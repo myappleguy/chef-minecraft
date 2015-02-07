@@ -49,10 +49,9 @@ default['minecraft']['xmx']                 = "#{(total_memory * 0.6).floor / 10
 # Additional options to be passed to java, for runit only
 default['minecraft']['java-options']        = ''
 
-default['minecraft']['ops']                 = []
-default['minecraft']['banned-ips']          = []
-default['minecraft']['banned-players']      = []
-default['minecraft']['whitelist']          = []
+minecraft_server_files.each do |file|
+  default['minecraft'][file]                 = []
+end
 
 # Stop minecraft from binding to ipv6 by default
 default['minecraft']['prefer_ipv4'] = true

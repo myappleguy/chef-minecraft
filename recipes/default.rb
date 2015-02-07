@@ -50,7 +50,7 @@ template "#{node['minecraft']['install_dir']}/server.properties" do
   notifies :restart, node['minecraft']['notify_resource'], :delayed if node['minecraft']['autorestart']
 end
 
-minecraft_server_files do |f|
+minecraft_server_files.each do |f|
   file "#{node['minecraft']['install_dir']}/#{f}.#{minecraft_file_format}" do
     owner node['minecraft']['user']
     group node['minecraft']['group']
