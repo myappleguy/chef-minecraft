@@ -29,7 +29,7 @@ user node['minecraft']['user'] do
 end
 
 if node['platform_family'] == 'windows'
-  template "#{node['minecraft']['install_dir']}/LsaWrapper.ps1" do
+  template "#{ENV['temp']}/LsaWrapper.ps1" do
     source "LsaWrapper.ps1.erb"
     owner node['minecraft']['user']
     action :create
@@ -37,9 +37,9 @@ if node['platform_family'] == 'windows'
 
   powershell_script "Add Log on as a batch job to mcserver user" do
     code <<-EOS
-      . #{node['minecraft']['install_dir']}/LsaWrapper.ps1
+      . #{ENV['temp']}/LsaWrapper.ps1
       $lsa_wrapper = New-Object -type LsaWrapper
-      $lsa_wrapper.SetRight("node['minecraft']['user']", "SeBatchLogonRight")
+      $lsa_wrapper.SetRight("#{node['minecraft']['user']}", "SeBatchLogonRight")
     EOS
   end
 else
