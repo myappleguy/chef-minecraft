@@ -1,4 +1,25 @@
-include Chef::Mixin::ShellOut
+use_inline_resources
+
+action :install do
+  template "#{node['minecraft']['install_dir']}/minecraft.bat" do
+    source "minecraft.bat.erb"
+    owner node['minecraft']['user']
+    action :create
+    variables({
+      :jar => ::File.join(node['minecraft']['install_dir'], minecraft_file(node['minecraft']['url']))
+    })
+  end
+
+  task = windows_task 'minecraft' do
+    user node['minecraft']['user']
+    password node['minecraft']['user_password']
+    cwd node['minecraft']['install_dir']
+    command "#{node['minecraft']['install_dir']}/minecraft.bat"
+    frequency :onstart
+  end
+
+  new_resource.updated_by_last_action(task.updated_by_last_action?)
+end
 
 action :start do
   minecraft_start
@@ -17,12 +38,16 @@ end
   pid = find_server_proc_id
   if pid.nil?
     converge_by("starting minecraft batch file") do
-      windows_task new_resource.service_name do
+      windows_task 'minecraft' do
         action :run
       end
 
-      Timeout::timeout(60) do
-        sleep 5 until !find_server_proc_id.nil?
+      ruby_block "wait for java" do
+        block do
+          Timeout::timeout(60) do
+            sleep 5 until !find_server_proc_id.nil?
+          end
+        end
       end
 
       new_resource.updated_by_last_action(true)

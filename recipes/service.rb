@@ -37,27 +37,9 @@ when 'runit'
     action [:enable, :start]
   end
 when 'windows_task'
-  batch_path = "#{node['minecraft']['install_dir']}/minecraft.bat"
-  template batch_path do
-    source "minecraft.bat.erb"
-    owner node['minecraft']['user']
-    action :create
-    variables({
-      :jar => File.join(node['minecraft']['install_dir'], minecraft_file(node['minecraft']['url']))
-    })
-  end
-
-  windows_task 'minecraft' do
-    user node['minecraft']['user']
-    password node['minecraft']['user_password']
-    cwd node['minecraft']['install_dir']
-    command batch_path
-    frequency :onstart
-  end
-
   node.default['minecraft']['notify_resource'] = "minecraft_windows_task[minecraft]"
   
   minecraft_windows_task 'minecraft' do
-    action :start
+    action [:install, :start]
   end
 end
