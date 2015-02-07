@@ -26,11 +26,13 @@ default['java']['install_flavor']           = 'default'
 
 case node['minecraft']['install_type']
 when 'vanilla'
-  default['minecraft']['url']                 = 'https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar'
+  default['minecraft']['version']             = '1.8.1'
+  default['minecraft']['url']                 = "https://s3.amazonaws.com/Minecraft.Download/versions/#{node['minecraft']['version']}/minecraft_server.#{node['minecraft']['version']}.jar"
   default['minecraft']['checksum']            = 'ef5f5a1a1a78087859b18153acf97efc6ecb12540ac08d82b9c95024249b9845'
   default['minecraft']['server_opts']         = 'nogui'
 when 'bukkit'
-  default['minecraft']['url']                 = 'http://dl.bukkit.org/downloads/craftbukkit/get/02389_1.6.4-R2.0/craftbukkit.jar'
+  default['minecraft']['version']             = '1.6.4'
+  default['minecraft']['url']                 = "http://dl.bukkit.org/downloads/craftbukkit/get/02389_#{node['minecraft']['version']}-R2.0/craftbukkit.jar"
   default['minecraft']['checksum']            = '29c26ec69dcaf8c1214f90f5fa5609fc451aae5fe0d22fd4ce37a505684545b3'
   default['minecraft']['server_opts']         = '--noconsole --online-mode true'
 when 'spigot'

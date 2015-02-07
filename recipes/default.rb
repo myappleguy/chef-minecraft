@@ -50,8 +50,8 @@ template "#{node['minecraft']['install_dir']}/server.properties" do
   notifies :restart, node['minecraft']['notify_resource'], :delayed if node['minecraft']['autorestart']
 end
 
-%w(ops banned-ips banned-players whitelist).each do |f|
-  file "#{node['minecraft']['install_dir']}/#{f}.json" do
+minecraft_server_files do |f|
+  file "#{node['minecraft']['install_dir']}/#{f}.#{minecraft_file_format}" do
     owner node['minecraft']['user']
     group node['minecraft']['group']
     mode 0644

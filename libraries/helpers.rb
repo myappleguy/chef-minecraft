@@ -16,6 +16,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+def minecraft_file_format
+  uses_json ? "json" : "txt"
+end
+
+def minecraft_server_files
+  if uses_json
+    %w(ops banned-ips banned-players whitelist).each
+  else
+    %w(ops banned-ips banned-players white-list).each
+  end
+end
+
+def uses_json
+  node['minecraft']['version'] && node['minecraft']['version'] < '1.7.9'
+end
+
 def minecraft_file(uri)
   require 'pathname'
   require 'uri'
