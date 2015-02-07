@@ -18,9 +18,6 @@
 #
 
 include_recipe "minecraft::java"
-include_recipe 'minecraft::user'
-
-jar_name = minecraft_file(node['minecraft']['url'])
 
 directory node['minecraft']['install_dir'] do
   recursive true
@@ -29,6 +26,10 @@ directory node['minecraft']['install_dir'] do
   mode 0755
   action :create
 end
+
+include_recipe 'minecraft::user'
+
+jar_name = minecraft_file(node['minecraft']['url'])
 
 remote_file "#{node['minecraft']['install_dir']}/#{jar_name}" do
   source node['minecraft']['url']
