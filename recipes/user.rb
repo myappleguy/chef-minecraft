@@ -45,10 +45,4 @@ if node['platform_family'] == 'windows'
       $lsa_wrapper.SetRight("#{node['minecraft']['user']}", "SeBatchLogonRight")
     EOS
   end
-else
-  group node['minecraft']['group'] do
-    action :modify
-    members node['minecraft']['user']
-    append true
-  end
 end
