@@ -1,7 +1,9 @@
 use_inline_resources
 
-action :install do
-  template "#{node['minecraft']['install_dir']}/minecraft.bat" do
+action :enable do
+  batch_path = ::File.join(node['minecraft']['install_dir'], "minecraft.bat")
+
+  template batch_path do
     source "minecraft.bat.erb"
     owner node['minecraft']['user']
     action :create
@@ -14,7 +16,7 @@ action :install do
     user node['minecraft']['user']
     password node['minecraft']['user_password']
     cwd node['minecraft']['install_dir']
-    command "#{node['minecraft']['install_dir']}/minecraft.bat"
+    command batch_path
     frequency :onstart
   end
 
@@ -62,7 +64,6 @@ def minecraft_stop
   pid = find_server_proc_id
 
   if !pid.nil?
-    puts "stopping #{pid}"
     converge_by("Sending interrupt signal to pid #{pid}") do
       Process.kill :KILL, pid
 
@@ -72,7 +73,6 @@ def minecraft_stop
     end
     new_resource.updated_by_last_action(true)
   else
-    puts "nothing to stop"
     Chef::Log.info("no minecraft server to stop")
     new_resource.updated_by_last_action(false)
   end
@@ -81,9 +81,14 @@ end
 def find_server_proc_id
   jar_path = ::File.join(node['minecraft']['install_dir'], minecraft_file(node['minecraft']['url']))
   Chef::Log.info("searching for process running #{jar_path}")
-  wmi = ::WIN32OLE.connect("winmgmts://")
+  
   res = wmi.ExecQuery("select ProcessId from Win32_Process where name = 'java.exe' and CommandLine like '%#{minecraft_file(node['minecraft']['url'])}%'")
   if res.each.count > 0
     res.each.next.ProcessId
   end
+end
+
+def wmi
+  @wmi ||= ::WIN32OLE.connect("winmgmts://")
+  @wmi
 end

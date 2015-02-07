@@ -40,6 +40,6 @@ when 'windows_task'
   node.default['minecraft']['notify_resource'] = "minecraft_windows_task[minecraft]"
   
   minecraft_windows_task 'minecraft' do
-    action [:install, :start]
+    action [:enable, :start]
   end
 end
