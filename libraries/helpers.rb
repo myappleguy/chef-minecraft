@@ -29,7 +29,7 @@ def minecraft_server_files
 end
 
 def uses_json
-  node['minecraft']['version'] && node['minecraft']['version'] < '1.7.9'
+  node['minecraft']['version'] && node['minecraft']['version'] >= '1.7.9'
 end
 
 def minecraft_file(uri)
