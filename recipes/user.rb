@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+group node['minecraft']['group'] unless node['platform_family'] == 'windows'
+
 user node['minecraft']['user'] do
   system true
   comment 'Minecraft Server'
