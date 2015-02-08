@@ -22,7 +22,7 @@ default['minecraft']['group']               = 'mcserver'
 # Currently vanilla, bukkit, spigot
 default['minecraft']['install_type']        = 'vanilla'
 
-default['java']['install_flavor']           = 'default'
+default['java']['install_flavor']           = 'openjdk'
 
 case node['minecraft']['install_type']
 when 'vanilla'
