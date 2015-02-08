@@ -63,7 +63,7 @@ case node['platform_family']
 when 'windows'
   default['minecraft']['init_style']          = 'windows_task'
   default['minecraft']['install_dir']         = "#{ENV['programdata']}/minecraft"
-  default['minecraft']['user_password']       = "Pass@word1"
+  default['minecraft']['user_password']       = 'Pass@word1'
 else
   default['minecraft']['init_style']          = 'runit'
   default['minecraft']['install_dir']         = '/srv/minecraft'

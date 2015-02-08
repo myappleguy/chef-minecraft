@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe "minecraft::java"
+include_recipe 'minecraft::java'
 include_recipe 'minecraft::user'
 
 directory node['minecraft']['install_dir'] do

@@ -21,7 +21,7 @@
 case node['minecraft']['init_style']
 when 'runit'
   include_recipe 'runit'
-  node.default['minecraft']['notify_resource'] = "runit_service[minecraft]"
+  node.default['minecraft']['notify_resource'] = 'runit_service[minecraft]'
   runit_service 'minecraft' do
     options({
       :install_dir => node['minecraft']['install_dir'],
@@ -37,8 +37,8 @@ when 'runit'
     action [:enable, :start]
   end
 when 'windows_task'
-  node.default['minecraft']['notify_resource'] = "minecraft_windows_task[minecraft]"
-  
+  node.default['minecraft']['notify_resource'] = 'minecraft_windows_task[minecraft]'
+
   minecraft_windows_task 'minecraft' do
     action [:enable, :start]
   end

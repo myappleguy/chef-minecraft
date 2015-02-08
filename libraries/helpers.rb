@@ -17,7 +17,7 @@
 # limitations under the License.
 
 def minecraft_file_format
-  uses_json ? "json" : "txt"
+  uses_json ? 'json' : 'txt'
 end
 
 def minecraft_server_files
@@ -40,8 +40,8 @@ end
 
 def total_memory
   if node['platform_family'] == 'windows'
-    wmi = ::WIN32OLE.connect("winmgmts://")
-    res = wmi.ExecQuery("select Capacity from Win32_PhysicalMemory")
+    wmi = ::WIN32OLE.connect('winmgmts://')
+    res = wmi.ExecQuery('select Capacity from Win32_PhysicalMemory')
     mem = res.each.next.capacity
     mem.to_i / 1024
   else
