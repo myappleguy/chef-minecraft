@@ -9,7 +9,7 @@ describe 'minecraft::default' do
         node.set['minecraft']['banned-ips'] = %w(10.1.2.3 10.1.100.10)
         node.set['minecraft']['banned-players'] = %w(gregf sandal82)
         node.set['minecraft']['white-list'] = %w(gregf sandal82)
-        node.set['minecraft']['whitelist'] = %w(gregf sandal82)        
+        node.set['minecraft']['whitelist'] = %w(gregf sandal82)
         node.automatic['memory']['total'] = '2097152kB'
       end.converge(described_recipe)
     end
