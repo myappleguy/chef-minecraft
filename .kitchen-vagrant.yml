@@ -6,7 +6,7 @@ provisioner:
 platforms:
 - name: windows-2012R2
   driver_config:
-    box: mwrock/Windows2012R2
+    box_url: https://wrock.blob.core.windows.net/vhds/vbox2012r2.box
   transport:
     name: winrm
 
