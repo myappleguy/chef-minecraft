@@ -8,6 +8,7 @@ platforms:
   driver_config:
     box_url: https://wrock.blob.core.windows.net/vhds/vbox2012r2.box
     communicator: winrm
+    vm_hostname: false
   transport:
     name: winrm
     port: 55985
