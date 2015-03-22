@@ -7,8 +7,10 @@ platforms:
 - name: windows-2012R2
   driver_config:
     box_url: https://wrock.blob.core.windows.net/vhds/vbox2012r2.box
+    communicator: winrm
   transport:
     name: winrm
+    port: 55985
 
 - name: ubuntu-12.04
   run_list:
