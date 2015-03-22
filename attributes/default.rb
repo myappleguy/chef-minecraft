@@ -61,6 +61,11 @@ default['minecraft']['autorestart'] = true
 
 case node['platform_family']
 when 'windows'
+  # Prevent errors from installing chocolatey on first run until the
+  # chocolatey cookbook is fixed to handle recent chocolatey changes
+  default['chocolatey']['upgrade'] = false
+  default['chocolatey']['Uri'] = 'https://chocolatey.org/Install-LastPoshClient.ps1'
+
   default['minecraft']['init_style']          = 'windows_task'
   default['minecraft']['install_dir']         = "#{ENV['programdata']}/minecraft"
   default['minecraft']['user_password']       = 'Pass@word1'
