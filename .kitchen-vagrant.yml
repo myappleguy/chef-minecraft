@@ -6,12 +6,11 @@ provisioner:
 platforms:
 - name: windows-2012R2
   driver_config:
-    box_url: https://wrock.blob.core.windows.net/vhds/vbox2012r2.box
+    box: mwrock/Windows2012R2
     communicator: winrm
     vm_hostname: false
   transport:
     name: winrm
-    port: 55985
 
 - name: ubuntu-12.04
   run_list:
