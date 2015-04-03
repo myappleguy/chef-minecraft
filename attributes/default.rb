@@ -42,9 +42,9 @@ when 'spigot'
 end
 
 # Defaults to 40% of your total memory.
-default['minecraft']['xms']                 = "#{(total_memory * 0.4).floor / 1024}M"
+default['minecraft']['xms']                 = "#{(minecraft_total_memory * 0.4).floor / 1024}M"
 # Defaults to 60% of your total memory.
-default['minecraft']['xmx']                 = "#{(total_memory * 0.6).floor / 1024}M"
+default['minecraft']['xmx']                 = "#{(minecraft_total_memory * 0.6).floor / 1024}M"
 
 # Additional options to be passed to java, for runit only
 default['minecraft']['java-options']        = ''
