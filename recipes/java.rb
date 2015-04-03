@@ -1,5 +1,4 @@
-case node['platform_family']
-when 'windows'
+if platform_family?('windows')
   include_recipe 'chocolatey'
   chocolatey 'javaruntime'
 else

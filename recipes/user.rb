@@ -24,9 +24,7 @@ user node['minecraft']['user'] do
   comment 'Minecraft Server'
   home node['minecraft']['install_dir']
   shell '/bin/false'
-  if node['minecraft']['user_password']
-    password node['minecraft']['user_password']
-  end
+  password node['minecraft']['user_password'] if node['minecraft']['user_password']
   gid node['minecraft']['group'] if node['platform_family'] != 'windows'
   action :create
 end

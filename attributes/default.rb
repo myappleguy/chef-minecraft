@@ -72,4 +72,5 @@ when 'windows'
 else
   default['minecraft']['init_style']          = 'runit'
   default['minecraft']['install_dir']         = '/srv/minecraft'
+  default['minecraft']['notify_resource']     = 'runit_service[minecraft]'
 end

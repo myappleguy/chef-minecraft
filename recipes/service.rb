@@ -21,7 +21,6 @@
 case node['minecraft']['init_style']
 when 'runit'
   include_recipe 'runit'
-  node.default['minecraft']['notify_resource'] = 'runit_service[minecraft]'
   runit_service 'minecraft' do
     options({
       :install_dir => node['minecraft']['install_dir'],
