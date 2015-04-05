@@ -3,6 +3,8 @@ driver_plugin: vagrant
 provisioner:
   name: chef_zero
 
+# Must run vagrant plugin install vagrant-winrm 
+# in order for the winrm transport to work
 platforms:
 - name: windows-2012R2
   driver_config:
