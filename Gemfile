@@ -12,7 +12,13 @@ group :unit do
 end
 
 group :kitchen_common do
-  gem 'test-kitchen', '~> 1.2'
+  gem 'winrm-transport'
+  gem 'test-kitchen', '1.4.0.rc.1'
+end
+
+group :kitchen_vagrant do
+  gem 'kitchen-vagrant', "0.17.0.rc.1"
+  gem 'vagrant-wrapper'
 end
 
 group :kitchen_cloud do
