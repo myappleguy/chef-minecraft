@@ -4,6 +4,7 @@
 
 ## Description
 
+:smiley:
 Installs and configures a [Minecraft](http://www.minecraft.net) server.
 
 * Opscode Community Site: http://community.opscode.com/cookbooks/minecraft

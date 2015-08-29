@@ -1,8 +1,6 @@
 ---
-driver_plugin: digitalocean
-driver_config:
-  flavor_id: 63
-  require_chef_omnibus: latest
+driver:
+  name: docker
 
 platforms:
 - name: ubuntu-12.10
